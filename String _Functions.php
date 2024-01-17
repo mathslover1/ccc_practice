@@ -56,5 +56,5 @@ $d = "Hello <br> World";
 // print_r(str_split($a));
 // Converts a string to an array, breaking it into smaller chunks.
 
-
+echo str_word_count($a);
 ?>
