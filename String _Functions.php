@@ -103,5 +103,24 @@ $ba="2";
 // echo strrev($a);
 // Reverses a string
 
+// echo strstr($a, "ac");
+// echo strstr($a, "def");
+// Finds the first occurrence of a string.
+
+$trans = array("a" => "1", "b" => "2", "c" => "3");
+// echo strtr($a, $trans);
+// echo "<br>";
+// echo strtr("Hilla Warld","ia","eo");
+// The strtr() function translates certain characters in a string.
+
+// echo ucfirst($a);
+// echo "<br>";
+// echo ucfirst(" abcd");
+// Converts the first character of a string to uppercase 
+
+$e = "Line 1\nLine 2";   
+// echo $e;
+// echo nl2br($a);'
+// Inserts HTML line breaks before all newlines in a string.
 
 ?>
