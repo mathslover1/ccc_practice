@@ -3,6 +3,7 @@ $a = "abcdefghi";
 $b = "ABCDEFGHI";
 $c = "   abcdefghi   ";
 $d = "Hello <br> World";
+
 // echo strlen($a);
 // Returns the length of a string.
 
@@ -120,7 +121,10 @@ $trans = array("a" => "1", "b" => "2", "c" => "3");
 
 $e = "Line 1\nLine 2";   
 // echo $e;
-// echo nl2br($a);'
+// echo nl2br($e);
 // Inserts HTML line breaks before all newlines in a string.
 
+// $quote = "In three words I can sum up everything I've learned about life: it
+// goes on.";
+// echo ucwords($quote);
 ?>
