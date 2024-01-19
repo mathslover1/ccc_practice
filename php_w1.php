@@ -351,6 +351,8 @@
 
 
 // Array Functions:
+// Array Creation and Initialization:
+
 
 // $emptyArray = array();
 // $shortArray = [];
@@ -366,8 +368,146 @@
 // $combinedArray = array_combine($keys, $values);
 // var_dump($combinedArray);
 
-$rangeArray = range(1, 10, 2);
-var_dump($rangeArray);
+// $rangeArray = range(1, 10,2);
+// print_r($rangeArray);   
+
+
+// Array Modification:
+
+
+// $stack = array("apple", "banana");
+// array_push($stack, "orange");
+// array_push($stack, " ");
+// var_dump($stack);
+
+// $stack = array("apple", "banana", "orange");
+// $poppedElement = array_pop($stack);
+// var_dump($poppedElement, $stack);
+
+// $queue = array("orange", "banana");
+// array_unshift($queue, "apple");
+// var_dump($queue);
+
+// $queue = array("apple", "banana", "orange");
+// $shiftedElement = array_shift($queue);
+// var_dump($shiftedElement, $queue);
+
+// $originalArray = array("apple", "banana", "cherry", "date");
+// $replacementArray = array("kiwi", "lemon");
+// array_splice($originalArray, 2, 2, $replacementArray);
+// var_dump($originalArray);
+
+
+// Array Access:
+
+
+// $countArray = array(1, 2, 3, 4, 5);
+// $arrayCount = count($countArray);
+// var_dump($arrayCount);
+
+// $sizeArray = array("apple", "banana", "cherry");
+// $arraySize = sizeof($sizeArray);
+// var_dump($arraySize);
+
+// $assocArray = array("a" => 1, "b" => 2, "c" => 3);
+// $keyExists = array_key_exists("a", $assocArray);
+// var_dump($keyExists);
+
+// $keysArray = array("a" => 1, "b" => 2, "c" => 3);
+// $arrayKeys = array_keys($keysArray);
+// var_dump($arrayKeys);
+
+// $valuesArray = array("a" => 1, "b" => 2, "c" => 3);
+// $arrayValues = array_values($valuesArray);
+// var_dump($arrayValues);
+
+
+// Array Search:
+
+
+// $searchArray = array("apple", "banana", "cherry");
+// $result = in_array("banana", $searchArray);
+// var_dump($result);
+
+// $searchArray = array("apple", "banana", "cherry");
+// $key = array_search("banana", $searchArray);
+// var_dump($key);
+
+// $reverseArray = array("apple", "banana", "cherry");
+// $reversedArray = array_reverse($reverseArray);
+// var_dump($reversedArray);
+
+
+// Array Sorting:
+
+
+// $unsortedArray = array(4, 2, 8, 1, 6," ");
+// sort($unsortedArray);
+// var_dump($unsortedArray);
+
+// $unsortedArray = array(4, 2, 8, 1, 6);
+// rsort($unsortedArray);
+// var_dump($unsortedArray);
+
+// $assocArray = array("b" => 2, "a" => 10, "c" => -3);
+// asort($assocArray);
+// var_dump($assocArray);
+
+// $assocArray = array("b" => 2, "a" => 10, "c" => -3);
+// ksort($assocArray);
+// var_dump($assocArray);
+
+// $assocArray = array("b" => 2, "a" => 10, "c" => -3);
+// arsort($assocArray);
+// var_dump($assocArray);
+
+// $assocArray = array("b" => 2, "a" => 10, "c" => -3);
+// krsort($assocArray);
+// var_dump($assocArray);
+
+
+// Array Filtering:
+
+
+// $numbers = array(1, 2, 3, 4, 5);
+// $filteredArray = array_filter($numbers, function ($value) {
+//     return $value % 2 == 0;
+// });
+// var_dump($filteredArray);
+
+// $numbers = [1, 2, 3, 4, 5];
+// $square = function ($num) {
+//     return $num * $num;
+// };
+
+// $squaredNumbers = array_map($square, $numbers);
+// var_dump($squaredNumbers);
+
+// $numbers = [1, 2, 3, 4, 5];
+// $sumCallback = function ($carry, $item) {
+//     $carry += $item;
+//     return $carry;
+// };
+
+// $sum = array_reduce($numbers, $sumCallback, 0);
+// var_dump($sum);
+
+
+
+// Array Slicing
+
+
+// $fruits = ["apple", "banana", "cherry", "date", "elderberry"];
+
+// // Extracts a portion of the array starting from index 2 with length 3
+// $resultSlice = array_slice($fruits, 2, 3, true);
+// var_dump($resultSlice);
+
+// $colors = ["red", "green", "blue", "yellow", "orange"];
+// // Removes 2 elements starting from index 1 and replaces with new values
+// $removed = array_splice($colors, 1, 2, ["purple", "pink"]);
+// var_dump($colors);
+// var_dump($removed);
 
 
 ?>
