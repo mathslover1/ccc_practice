@@ -12,10 +12,7 @@
     <form action="" method="post">
         <div class="box">
             <div class="container">
-                <!-- Form Header -->
                 <div class="top"></div>
-
-                <!-- Input Fields -->
                 <div class="input-field">
                     <input type="text" class="input" name="product_name" placeholder="Product Name" id="product_name" required pattern="[a-zA-Z'-'\s]*">
                     <i class='bx bx-user'></i>
@@ -26,7 +23,6 @@
                     <i class='bx bx-user'></i>
                 </div>
                 <br>
-                <!-- Radio Button Section: Product Type -->
                 <div class="input-field">
                     <label for="product_type">Product Type</label>
                     <div class="radio-group">
@@ -37,7 +33,6 @@
                     </div>
                 </div>
                 <br>
-                <!-- Dropdown Section: Category -->
                 <div class="input-field">
                     <label for="Category">Category:</label>
                     <select id="Category" name="Category" class="input">
@@ -54,7 +49,6 @@
                 </div>
                 <br>
 
-                <!-- Additional Input Fields -->
                 <div class="input-field">
                     <input type="text" class="input" name="manufacturer_cost" placeholder="Manufacturer Cost" id="manufacturer_cost">
                     <i class='bx bx-user'></i>
@@ -96,7 +90,6 @@
                     <i class='bx bx-user'></i>
                 </div>
 
-                <!-- Submit Button -->
                 <div class="input-field">
                     <input type="submit" class="submit" value="Submit" id="submit" name="submit">
                 </div>
