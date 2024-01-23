@@ -9,7 +9,7 @@
     <title>Your Page Title</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="phpw2_backend.php" method="post">
         <div class="box">
             <div class="container">
                 <div class="top"></div>
@@ -24,7 +24,7 @@
                 </div>
                 <br>
                 <div class="input-field">
-                    <label for="product_type">Product Type</label>
+                    <label name="product_type">Product Type</label>
                     <div class="radio-group">
                         <input type="radio" id="simple" name="product_type" value="simple" checked>
                         <label for="simple">Simple</label>
@@ -34,8 +34,8 @@
                 </div>
                 <br>
                 <div class="input-field">
-                    <label for="Category">Category:</label>
-                    <select id="Category" name="Category" class="input">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" class="input">
                         <option value="bgr">Bar & Game Room</option>
                         <option value="bedroom">Bedroom</option>
                         <option value="decor">Decor</option>
@@ -77,18 +77,6 @@
                     </select>
                 </div>
                 <br>
-
-                <div class="input-field">
-                <label for="created_at">Created At:</label>
-                    <input type="date" class="input" name="created_at" placeholder="Created At" id="created_at">
-                    <i class='bx bx-user'></i>
-                </div>
-
-                <div class="input-field">
-                <label for="updated_at">Updated At:</label>
-                    <input type="date" class="input" name="updated_at" placeholder="Updated At" id="updated_at">
-                    <i class='bx bx-user'></i>
-                </div>
 
                 <div class="input-field">
                     <input type="submit" class="submit" value="Submit" id="submit" name="submit">
