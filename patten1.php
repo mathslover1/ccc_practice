@@ -1,36 +1,34 @@
 <?php
 
 for ($i = 1; $i <= 5; $i++) {
-    for ($j =1; $j < 6; $j++) {
+    for ($j = 1; $j < 6; $j++) {
         if ($i > $j) {
-            echo "-"." ";
+            echo "_" . " ";
         } else {
-    echo "$j"." ";
+            echo "$j" . " ";
+        }
     }
-  }
-  for ($k = 6; $k <=11-$i; $k++) {
-        echo "$k"." ";;
+    for ($k = 6; $k <= 11 - $i; $k++) {
+        echo "$k" . " ";;
     }
-    for ($k = 10; $k >11-$i;$k--){
-        echo "-"." ";
+    for ($k = 10; $k > 11 - $i; $k--) {
+        echo "_" . " ";
     }
-  echo "<br>";
+    echo "<br>";
 }
 for ($i = 4; $i >= 1; $i--) {
-    for ($j =1; $j < 6; $j++) {
+    for ($j = 1; $j < 6; $j++) {
         if ($i > $j) {
-            echo "-"." ";
+            echo "_" . " ";
         } else {
-    echo "$j"." ";
+            echo "$j" . " ";
+        }
     }
-  }
-  for ($k = 6; $k <=11-$i; $k++) {
-        echo "$k"." ";;
+    for ($k = 6; $k <= 11 - $i; $k++) {
+        echo "$k" . " ";;
     }
-    for ($k = 10; $k >11-$i;$k--){
-        echo "-"." ";
+    for ($k = 10; $k > 11 - $i; $k--) {
+        echo "_" . " ";
     }
-  echo "<br>";
+    echo "<br>";
 }
-
-?>

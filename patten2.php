@@ -3,7 +3,7 @@
 for ($i = 1; $i <= 6; $i++) {
     for ($j =1; $j < 6; $j++) {
         if ($i > $j) {
-            echo "-"." ";
+            echo "_"." ";
         } else {
     echo "$j"." ";
     }
@@ -12,14 +12,14 @@ for ($i = 1; $i <= 6; $i++) {
         echo "$k"." ";;
     }
     for ($k = 10; $k >11-$i;$k--){
-        echo "-"." ";
+        echo "_"." ";
     }
   echo "<br>";
 }
-for ($i = 4; $i >= 1; $i--) {
+for ($i = 5; $i >= 1; $i--) {
     for ($j =1; $j < 6; $j++) {
         if ($i > $j) {
-            echo "-"." ";
+            echo "_"." ";
         } else {
     echo "$j"." ";
     }
@@ -28,7 +28,7 @@ for ($i = 4; $i >= 1; $i--) {
         echo "$k"." ";;
     }
     for ($k =10; $k >11-$i;$k--){
-        echo "-"." ";
+        echo "_"." ";
     }
   echo "<br>";
 }
