@@ -11,10 +11,8 @@ function bubbleSort($arr){
             }
         }
     }
-
     return $arr;
 }
-
 $arrayToSort = [64, 34, 25, 12, 22, 11, 90];
 $sortedArray = bubbleSort($arrayToSort);
 echo "Sorted array: " . implode(', ', $sortedArray);
