@@ -14,28 +14,28 @@
             <div class="container">
                 <div class="top"></div>
                 <div class="input-field">
-                    <input type="text" class="input" name="product_name" placeholder="Product Name" id="product_name" required pattern="[a-zA-Z'-'\s]*">
+                    <input type="text" class="input" name="ccc_product[product_name]" placeholder="Product Name" id="product_name" required pattern="[a-zA-Z'-'\s]*">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" name="sku" placeholder="SKU" id="sku" required pattern="[a-zA-Z'-'\s]*">
+                    <input type="text" class="input" name="ccc_product[sku]" placeholder="SKU" id="sku" required pattern="[a-zA-Z'-'\s]*">
                     <i class='bx bx-user'></i>
                 </div>
                 <br>
                 <div class="input-field">
-                    <label name="product_type">Product Type</label>
+                    <label name="ccc_product[product_type]">Product Type</label>
                     <div class="radio-group">
-                        <input type="radio" id="simple" name="product_type" value="simple" checked>
+                        <input type="radio" id="simple" name="ccc_product[product_type]" value="simple" checked>
                         <label for="simple">Simple</label>
-                        <input type="radio" id="bundle" name="product_type" value="bundle">
+                        <input type="radio" id="bundle" name="ccc_product[product_type]" value="bundle">
                         <label for="bundle">Bundle</label>
                     </div>
                 </div>
                 <br>
                 <div class="input-field">
                     <label for="category">Category:</label>
-                    <select id="category" name="category" class="input">
+                    <select id="category" name="ccc_product[category]" class="input">
                         <option value="bgr">Bar & Game Room</option>
                         <option value="bedroom">Bedroom</option>
                         <option value="decor">Decor</option>
@@ -50,28 +50,28 @@
                 <br>
 
                 <div class="input-field">
-                    <input type="text" class="input" name="manufacturer_cost" placeholder="Manufacturer Cost" id="manufacturer_cost">
+                    <input type="text" class="input" name="ccc_product[manufacturer_cost]" placeholder="Manufacturer Cost" id="manufacturer_cost">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" name="shipping_cost" placeholder="Shipping Cost" id="shipping_cost">
+                    <input type="text" class="input" name="ccc_product[shipping_cost]" placeholder="Shipping Cost" id="shipping_cost">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" name="total_cost" placeholder="Total Cost" id="total_cost">
+                    <input type="text" class="input" name="ccc_product[total_cost]" placeholder="Total Cost" id="total_cost">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
-                    <input type="text" class="input" name="price" placeholder="Price" id="price">
+                    <input type="text" class="input" name="ccc_product[price]" placeholder="Price" id="price">
                     <i class='bx bx-user'></i>
                 </div>
 
                 <div class="input-field">
                     <label for="status">Status:</label>
-                    <select id="status" name="status" class="input">
+                    <select id="status" name="ccc_product[status]" class="input">
                         <option value="enabled">Enabled</option>
                         <option value="disabled">Disabled</option>
                     </select>
