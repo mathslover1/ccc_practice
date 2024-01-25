@@ -2,7 +2,7 @@
     <body>
         <?php 
     $conn = mysqli_connect("localhost","root","","ccc_practice");
-    $query = "SELECT * from `ccc_product` ORDER BY `index` LIMIT 10";
+    $query = "SELECT * from `ccc_product` ORDER BY `product_id` LIMIT 10";
     $res = mysqli_query($conn,$query);
     while ($row = mysqli_fetch_assoc($res)) {
     ?>
