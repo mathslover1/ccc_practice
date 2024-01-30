@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap');
+
+* {
+    font-family: 'poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: radial-gradient(circle at center, #ffffff, #00000058);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+}
+
+.container {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+.top {
+    /* Add styles for the top if needed */
+}
+
+.input-field {
+    margin-bottom: 15px;
+}
+
+.input-field .input,
+.input-field select {
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    padding: 0 15px;
+    background: rgb(255, 233, 233);
+    outline: none;
+}
+
+.radio-group label,
+.input-field label {
+    margin-bottom: 5px; /* Adjust spacing between labels and input fields */
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column; /* Adjust for radio buttons */
+}
+
+.submit {
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    height: 45px;
+    outline: none;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.submit:hover {
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}

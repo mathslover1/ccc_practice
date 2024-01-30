@@ -1,24 +1,7 @@
 <?php
-require("sql/connection.php");
+require("catalog/sql/connection.php");
 $connection=mysqlConnection();
-function getParams(string $key)
-{
-    if (isset($_POST[$key])) {
-        return $_POST[$key];
-    } elseif (isset($_GET[$key])) {
-        return $_GET[$key];
-    }
-}
-function getKeysFromPostRequest()
-{
-    $keys = [];
-    foreach ($_POST as $key => $val) {
-        if (is_array($val)) {
-            $keys[] = $key;
-        }
-    }
-    return $keys;
-}
+
 function insert(string $table_name, array $data)
 {
     global $connection;
@@ -52,6 +35,7 @@ function update(string $tablename,array $data,array $where)
     return $res;
 }
 function delete(string $tablename,array $where){
+    global $connection;
     $c = $w = [];
     foreach ($where as $col => $val) {
         $w[] = "`$col`='$val'";
@@ -60,7 +44,8 @@ function delete(string $tablename,array $where){
     $c = implode(", ", $c);
     $w = implode(" AND ", $w);
     $query="DELETE FROM {$tablename} WHERE {$w}";
-    return $query;
+    $res=mysqli_query($connection,$query);
+    return $res;
 }
 function select(string $table_name, string $primary_key, array $columns)
 {

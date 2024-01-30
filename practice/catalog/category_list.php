@@ -30,11 +30,8 @@
             while ($rowCategory = mysqli_fetch_assoc($resultCategory)) {
                 echo "<tr>
                 <td>{$rowCategory['cat_id']}</td>
-                <td>{$rowCategory['name']}</td>
-                <td><a href='delect_category.php?id={$rowCategory['cat_id']}'>Delete</a></td>
-                <td><a href='category.php?id={$rowCategory['cat_id']}'>Update</a></td>
+                <td>{$rowCategory['name']}</td> 
                 </tr>";
-            
             }
             ?>
         </tbody>
