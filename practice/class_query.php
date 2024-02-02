@@ -1,4 +1,5 @@
 <?php
+include "./sql/connection.php";
 class QueryBuilder
 {
     private $tablename;
