@@ -1,5 +1,5 @@
 <?php
-require("sql/connection.php");
+require("connection.php");
 $connection=mysqlConnection();
 function getParams(string $key)
 {
