@@ -1,9 +1,20 @@
-<?php
+<pre><?php
 class View_Product
 {
-    public function __construct()
-    {
-    }
+    public $newobj;
+    // public function __construct()
+    // {
+    //     $obj = new Model_Request();
+    //     var_dump($obj->getparams('id'));
+    //     $id = ($obj->getparams('id'));
+    //     $obj = new Lib_Sql_Query_Builder();
+    //     $sql = $obj->select("ccc_product", "*", ["product_id" => $id]);
+    //     $test = $obj->execute($sql);
+    //     // $data = $obj->fetchAssoc($test);
+    //     print_r($data = $obj->fetchAssoc($test));
+    //     var_dump($this->newobj = new Lib_Data_Object($data[0]));
+        
+    // }
     public function createForm(){
         $form = '<style>
                     .form-container {
@@ -40,10 +51,10 @@ class View_Product
         $form .= '<div class="form-container">';
         $form .= '<form action="" method="POST" class="product-form">';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[product_name]', "Product Name:", "", 'product_name', 'form-control');
+        $form .= $this->creteTextField('ccc_product[product_name]', "Product Name:","", 'product_name', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[sku]', "Sku:", "", 'sku', 'form-control');
+        $form .= $this->creteTextField('ccc_product[sku]', "Sku:", "$this->newobj->getsku()", 'sku', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
         $form .= $this->createRadioButtons('ccc_product[product_type]',"Product Type:", array(
@@ -128,7 +139,8 @@ class View_Product
 
     public function toHtml()
     {
-        return $this->createForm();
+        // return $this->createForm();
+        echo "hey";
     }
 }
 ?>

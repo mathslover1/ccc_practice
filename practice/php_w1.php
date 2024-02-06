@@ -484,7 +484,7 @@
 // var_dump($squaredNumbers);
 
 // $numbers = [1, 2, 3, 4, 5];
-// $sumCallback = function ($carry, $item) {
+// $sumCallback = function ($carry, $item){
 //     $carry += $item;
 //     return $carry;
 // };
@@ -500,7 +500,7 @@
 // $fruits = ["apple", "banana", "cherry", "date", "elderberry"];
 
 // // Extracts a portion of the array starting from index 2 with length 3
-// $resultSlice = array_slice($fruits, 2, 3, true);
+// $resultSlice = array_slice($fruits, 2, 3,true);
 // var_dump($resultSlice);
 
 // $colors = ["red", "green", "blue", "yellow", "orange"];
@@ -508,6 +508,5 @@
 // $removed = array_splice($colors, 1, 2, ["purple", "pink"]);
 // var_dump($colors);
 // var_dump($removed);
-
 
 ?>

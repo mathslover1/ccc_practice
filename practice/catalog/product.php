@@ -71,7 +71,7 @@ if (getParams('action') == 'delete' && getParams('product_id')) {
         echo "<script>location. href='product_list.php'</script>";
     }
 }
-if (getParams('update')) {
+if (getParams('update')) {  
     $keys = getKeysFromPostRequest();
     for ($i = 0; $i < count($keys); $i++) {
         $update_query = update($keys[$i], ['product_id' => getParams('product_id')], getParams($keys[$i]));

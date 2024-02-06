@@ -3,7 +3,11 @@
 class Model_Request{
     public function __construct(){
 
-    } 
+    }
+    public function getrequestURI(){
+        $request_uri = $_SERVER['REQUEST_URI'];
+        return $request_uri;
+    }
     public function getparams($keys=''){
         return ($keys == '')
         ? $_REQUEST

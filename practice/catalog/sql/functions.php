@@ -65,7 +65,7 @@ function delete(string $tablename,array $where){
 function select(string $table_name, string $primary_key, array $columns)
 {
     global $connection;
-    $columns = join(", ", $columns);
+    $columns = implode(", ", $columns);
     $query = "SELECT {$columns} FROM `{$table_name}` ORDER BY `{$primary_key}` DESC";
     $res=mysqli_query($connection,$query);
     return $res;

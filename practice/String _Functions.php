@@ -3,7 +3,6 @@ $a = "abcdefghi";
 $b = "ABCDEFGHI";
 $c = "   abcdefghi   ";
 $d = "Hello <br> World";
-
 // echo strlen($a);
 // Returns the length of a string.
 
@@ -53,7 +52,7 @@ $d = "Hello <br> World";
 // echo str_shuffle($a);
 // Randomly shuffles all characters in a string.
 
-// print_r(str_split($a, 4));
+// print_r(str_split($a, 2));
 // print_r(str_split($a));
 // Converts a string to an array, breaking it into smaller chunks.
 
@@ -88,7 +87,7 @@ $ba="2";
 // Locale based string comparison.'
 
 // $mask = "123";
-// $mask2="bd";
+// $mask2="f";
 // echo strcspn($a, $mask,0,5);
 // echo "<br>";
 // echo strcspn($a, $mask2,3,5);
