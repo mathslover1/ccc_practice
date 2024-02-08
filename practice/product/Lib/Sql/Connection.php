@@ -1,5 +1,5 @@
 <?php
-class Lib_Connection
+class Lib_Sql_Connection
 {
     protected $_conn = null;
 
@@ -20,14 +20,5 @@ class Lib_Connection
         return $this->_conn;
 
     }
-    public function execute($sql)
-    {
-    	try {
-    		return $this->connect()->query($sql);
-            
-    	} catch(Exception $e) {
-
-    		var_dump($e->getMessage());
-    	}
-    }
+    
 }

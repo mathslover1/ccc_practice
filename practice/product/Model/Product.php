@@ -6,15 +6,16 @@ class Model_Product extends Model_Abstract
     public function __construct()
     {
     }
-    public function save($data)
-    {
-        echo "<pre>";
-        $sql = $this->getQueryBuilder()
-            ->insert(
-                $this->tableName,
-                $data
-            );
-        return $this->getQueryBuilder()->execute($sql);
-        
+    public function add($data){
+        $sql=$this->getQueryBuilder()->insert('ccc_product',$data);
+        return $this->getQueryExecutor()->execute($sql);
     }
+    public function update($data,$where){
+        $sql=$this->getQueryBuilder()->update('ccc_product',$data,$where);
+        return $this->getQueryExecutor()->execute($sql);
+    }
+    public function delete($where){
+        $sql=$this->getQueryBuilder()->delete('ccc_product',$where);
+        return $this->getQueryExecutor()->execute($sql);
+}
 }

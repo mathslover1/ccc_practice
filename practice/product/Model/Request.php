@@ -4,7 +4,7 @@ class Model_Request{
     public function __construct(){
 
     }
-    public function getrequestURI(){
+    public function getrequestUri(){
         $request_uri = $_SERVER['REQUEST_URI'];
         return $request_uri;
     }

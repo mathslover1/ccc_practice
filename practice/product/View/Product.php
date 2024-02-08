@@ -2,19 +2,18 @@
 class View_Product
 {
     public $newobj;
-    // public function __construct()
-    // {
-    //     $obj = new Model_Request();
-    //     var_dump($obj->getparams('id'));
-    //     $id = ($obj->getparams('id'));
-    //     $obj = new Lib_Sql_Query_Builder();
-    //     $sql = $obj->select("ccc_product", "*", ["product_id" => $id]);
-    //     $test = $obj->execute($sql);
-    //     // $data = $obj->fetchAssoc($test);
-    //     print_r($data = $obj->fetchAssoc($test));
-    //     var_dump($this->newobj = new Lib_Data_Object($data[0]));
+    public function __construct()
+    {
+        $obj = new Model_Request();
+        $obj->getGetData('id');
+        $id = ($obj->getGetData('id'));
+        $obj = new Model_Abstract();
+        $sql = $obj->getQueryBuilder()->select("ccc_product", "*", ["product_id" => $id]);
+        $test = $obj->getQueryExecutor()->execute($sql);
+        $data = $obj->getQueryExecutor()->fetchAssoc($test);
+        $this->newobj = new Model_Data_Object($data);
         
-    // }
+    }
     public function createForm(){
         $form = '<style>
                     .form-container {
@@ -51,16 +50,16 @@ class View_Product
         $form .= '<div class="form-container">';
         $form .= '<form action="" method="POST" class="product-form">';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[product_name]', "Product Name:","", 'product_name', 'form-control');
+        $form .= $this->creteTextField('ccc_product[product_name]', "Product Name:",$this->newobj->getproduct_name(), 'product_name', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[sku]', "Sku:", "$this->newobj->getsku()", 'sku', 'form-control');
+        $form .= $this->creteTextField('ccc_product[sku]', "Sku:",$this->newobj->getsku(), 'sku', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
         $form .= $this->createRadioButtons('ccc_product[product_type]',"Product Type:", array(
             'simple' => 'Simple',
             'bundle' => 'Bundle',
-        ), '', '');
+        ),$this->newobj->getproduct_type(), '');
         $form .= '</div>';
         $form .= '<div class="form-group">';
         $form .= $this->createDropdownField('ccc_product[cat_id]',"Category:", array(
@@ -73,25 +72,25 @@ class View_Product
             '7' => 'Mattresses',
             '8' => 'Office',
             '9' => 'Outdoor',
-        ), '', 'category', 'form-control');
+        ),$this->newobj->getcat_id(), 'category', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[manufacturer_cost]', "Manufacturer Cost:", "", 'manufacturer_cost', 'form-control');
+        $form .= $this->creteTextField('ccc_product[manufacturer_cost]', "Manufacturer Cost:",$this->newobj->getmanufacturer_cost(), 'manufacturer_cost', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[shipping_cost]', "Shipping Cost:", "", 'shipping_cost', 'form-control');
+        $form .= $this->creteTextField('ccc_product[shipping_cost]', "Shipping Cost:",$this->newobj->getshipping_cost(), 'shipping_cost', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[total_cost]', "Total Cost:", "", 'total_cost', 'form-control');
+        $form .= $this->creteTextField('ccc_product[total_cost]', "Total Cost:",$this->newobj->gettotal_cost(), 'total_cost', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
-        $form .= $this->creteTextField('ccc_product[price]', "Price:", "", 'price', 'form-control');
+        $form .= $this->creteTextField('ccc_product[price]', "Price:",$this->newobj->getprice(), 'price', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
         $form .= $this->createDropdownField('ccc_product[status]',"Status:",[
             'enabled' => 'Enabled',
             'disabled' => 'Disabled',
-        ], '', 'status', 'form-control');
+        ],$this->newobj->getstatus(), 'status', 'form-control');
         $form .= '</div>';
         $form .= '<div class="form-group">';
         $form .= $this->creteSubmitBtn('Submit');
@@ -137,10 +136,9 @@ class View_Product
         return '<input type="submit" class="btn btn-primary" name="submit" value="'.$title.'">';
     }
 
-    public function toHtml()
+    public function toHTML()
     {
-        // return $this->createForm();
-        echo "hey";
+        return $this->createForm();
     }
 }
 ?>
