@@ -91,7 +91,8 @@
                         'disabled' => 'Disabled',
                     ], $newObj->getstatus(), 'status', 'form-control');
                     $form .= '</div>';
-                } else {
+                } 
+                else {
                     $form .= $this->creteTextField('ccc_product[product_name]', "Product Name:", '', 'product_name', 'form-control');
                     $form .= '</div>';
                     $form .= '<div class="form-group">';
