@@ -1,10 +1,18 @@
 <html>
-    <head>
-        <title>MVC</title>
-    </head>
-    <body>
-        <h1>
-            PAGE
+
+<head>
+    <title>MVC</title>
+    <?php
+    //   $this->getChildHtml('head');
+       ?>
+</head>
+
+<body>
+    <h1>
+            <div><?php $this->getChildHtml('header'); ?> </div>
+            <div><?php $this->getChildHtml('content'); ?> </div>
+            <div><?php $this->getChildHtml('messages'); ?> </div>
+            <div><?php $this->getChildHtml('footer'); ?> </div>
         </h1>
     </body>
 </html>

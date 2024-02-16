@@ -10,10 +10,24 @@ class Core_Model_Request{
         $this->_controllerName = isset($requstUri[1])?$requstUri[1]:"index";
         $this->_actionName     = isset($requstUri[2])?$requstUri[2]:"index";
     }
+    // public function getRequestUri()
+    // {
+    //     $requst = $_SERVER["REQUEST_URI"];
+    //     $uri = str_replace("/Internship/Mvc/", "", $requst);
+    //     if(str_contains($uri, '?'))
+    //     {
+    //         $pos = strpos($uri, '?');
+    //         $temp_uri = substr($uri,$pos);
+    //         $uri = str_replace($temp_uri,"",$uri);
+    //         return $uri;
+    //     }
+    //     return $uri;
+    // }
     public function getRequestUri()
     {
         $requst = $_SERVER["REQUEST_URI"];
         $uri = str_replace("/Internship/Mvc/", "", $requst);
+        $uri = stristr($uri, '?', True);
         return $uri;
     }
     public function getModuleName(){

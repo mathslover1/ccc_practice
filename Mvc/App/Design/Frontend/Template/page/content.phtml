@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <h1>
+            CONTENT
+        </h1>
+        <?php
+    //    echo  $this->getRequest()->getparams("id");
+       $productmodel = Mage::getModel("Product/Product");
+       echo "<pre>";
+       print_r($productmodel->load(123));
+        ?>
+    </body>
+</html>

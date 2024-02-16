@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <h1>
+            HEAD
+            <pre>
+            <?php print_r($this) ?>
+        </h1>
+        <?php $js = $this->getjs(); ?>
+        <?php if(count($js)):  ?>
+            <?php foreach($js as $_js): ?>
+                <script type="" src="<?php echo $_js; ?>"></script>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            <?php $css = $this->getcss();
+    if(count($css)):
+    foreach($css as $_css): ?>
+    <style type = "" src = <?php echo $_css; ?>> </style>
+    <?php endforeach;
+    endif;?>
+    </body>
+</html>
