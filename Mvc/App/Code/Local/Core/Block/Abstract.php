@@ -7,7 +7,7 @@ class Core_Block_Abstract{
     }
     public function setTemplate($template){
         $this->template = $template;
-
+        return $this;
     }
     public function getTemplate(){
         return $this->template;
@@ -37,12 +37,14 @@ class Core_Block_Abstract{
         $this->template->setData($data);
 
     }
-    public function getUrl($action = null, $controller = null, $params = [], $resetParams = false){
+    // public function getUrl($action = null, $controller = null, $params = [], $resetParams = false){
+    // }
+    public function getUrl($path){
+        return "http://localhost/Internship/Mvc/".$path; 
+    } 
 
-
-    }
     public function getRequest(){
-
+        return Mage::getModel('core/request');
     }
     public function render(){
        include Mage::getBaseDir('app'). '/design/frontend/template/' . $this->getTemplate();

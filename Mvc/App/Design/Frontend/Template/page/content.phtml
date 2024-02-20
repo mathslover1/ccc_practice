@@ -3,15 +3,14 @@
         <h1>
             CONTENT
         </h1>
-        <pre>
         <?php
+       $this->getChildHtml('');
     //    echo  $this->getRequest()->getparams("id");
-       $productModel = Mage::getModel("Catalog/Product")->load(16);
-       echo "<pre>";
+    //    $productModel = Mage::getModel("Catalog/Product")->load(16);
     //    print_r($productModel->load(12));
-       print_r($productModel->getId()); 
-       print_r($productModel->getProduct_name());
-       print_r($productModel->getsku());
+    //    print_r($productModel->getId()); 
+    //    print_r($productModel->getProduct_name());
+    //    print_r($productModel->getsku());
     //    print_r($productModel);
         ?>
     </body>

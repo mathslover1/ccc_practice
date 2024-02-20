@@ -27,7 +27,9 @@ class Core_Model_Request{
     {
         $requst = $_SERVER["REQUEST_URI"];
         $uri = str_replace("/Internship/Mvc/", "", $requst);
+        if(str_contains($uri,"?")){
         $uri = stristr($uri, '?', True);
+        }
         return $uri;
     }
     public function getModuleName(){
