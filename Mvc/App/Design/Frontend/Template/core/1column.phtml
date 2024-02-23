@@ -3,16 +3,21 @@
 <head>
     <title>MVC</title>
     <?php
-    //   $this->getChildHtml('head');
-       ?>
+    $this->getChildHtml('head');
+    ?>
 </head>
 
 <body>
-    <h1>
-            <div><?php $this->getChildHtml('header'); ?> </div>
-            <div><?php $this->getChildHtml('content'); ?> </div>
-            <div><?php $this->getChildHtml('messages'); ?> </div>
-            <div><?php $this->getChildHtml('footer'); ?> </div>
-        </h1>
-    </body>
+
+    <div>
+        <header><?php $this->getChildHtml('header'); ?> </header>
+    </div>
+    <div><?php $this->getChildHtml('content'); ?> </div>
+    <div><?php $this->getChildHtml('messages'); ?> </div>
+    <div>
+        <footer><?php $this->getChildHtml('footer'); ?> </footer>
+    </div>
+
+</body>
+
 </html>

@@ -54,9 +54,23 @@ class Core_Model_Db_Adapter
     }
     public function update($query)
     {
+        $this->connect();
+        $sql = mysqli_query($this->connect, $query);
+        if ($sql) {
+            echo"<script>alert('Data Update Successfully')</script>";
+        } else {
+            return FALSE;
+        }
     }
     public function delete($query)
     {
+        $this->connect();
+        $sql = mysqli_query($this->connect, $query);
+        if ($sql) {
+            echo"<script>alert('Data Delete Successfully')</script>";
+        } else {
+            return FALSE;
+        }
     }
     public function query($query)
     {

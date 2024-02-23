@@ -1,6 +1,6 @@
 <?php
 
-class Core_Model_Abstract {
+class Core_Model_Abstract  {
     protected $_data = [];
     protected $_resourceClass = '';
     protected $_collectionClass = '';
@@ -9,6 +9,7 @@ class Core_Model_Abstract {
     public function __construct() {
         $this->init();
     }
+    
     public function init() {
     }
     public function setResourceClass($resourceClass){
@@ -57,8 +58,12 @@ class Core_Model_Abstract {
        $this->_data = $this->getResource()->load($id, $column);
         return $this;
     }
-    public function delete(){
-    }
+        public function delete(){
+            if($this->getId()){
+            $this->getResource()->delete($this);
+        }
+            return $this;
+        }
     public function camelCase2UnderScore($str, $separator = "_")
     {
         if (empty($str)) {

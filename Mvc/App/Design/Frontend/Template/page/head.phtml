@@ -1,21 +1,14 @@
-<html>
-    <body>
-        <h1>
-            HEAD
-            <pre>
-            <?php print_r($this) ?>
-        </h1>
-        <?php $js = $this->getjs(); ?>
+       <?php $js = $this->getJs(); ?>
         <?php if(count($js)):  ?>
             <?php foreach($js as $_js): ?>
-                <script type="" src="<?php echo $_js; ?>"></script>
+                <script type="" src="<?php  Mage::getBaseUrl().$_js; ?>"></script>
                 <?php endforeach; ?>
             <?php endif; ?>
-            <?php $css = $this->getcss();
+            <?php $css = $this->getCss();
     if(count($css)):
     foreach($css as $_css): ?>
-    <style type = "" src = <?php echo $_css; ?>> </style>
+    <link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl($_css); ?>" ></link>
     <?php endforeach;
     endif;?>
-    </body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">

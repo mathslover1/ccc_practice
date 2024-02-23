@@ -44,14 +44,14 @@ class Core_Model_Request{
     public function getFullControllerClass(){
         return implode("_",[ucfirst($this->_moduleName),'Controller',ucfirst($this->_controllerName)]);
     }
-    public function getparams($keys=''){
-        return ($keys == '')
-        ? $_REQUEST
-        : (isset($_REQUEST[$keys])
-            ? $_REQUEST[$keys]
-            : ''
-        );
-    }
+	public function getParams($key = '', $arg = null) {
+		return ($key == '')
+			? $_REQUEST
+			: (isset($_REQUEST[$key])
+				? $_REQUEST[$key]
+				: ((!is_null($arg)) ? $arg : '')
+			);
+	}
     public function getPostData($keys=''){
         return ($keys == '')
         ? $_POST
