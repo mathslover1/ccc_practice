@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category Form</title>
-</head>
-
-<body>
-    <form action="">
+<?php
+$product_model = $this->getCategory();    
+?>
+    <form action="<?php echo $this->getUrl('admin/catalog_category/save'); ?>" method="post">
+        <div class="row">
+            <input type="hidden" name="catalog_category[category_id]" value="<?php echo $product_model->getCategoryId()?>" >
+        </div>
         <div class="row">
             <label for="name">Name : </label>
-            <input type="text" name="catalog_product[name]" id="name">
+            <input type="text" name="catalog_category[category_name]" id="name" value="<?php echo $product_model->getCategoryName()?> ">
         </div>
         <div class="row">
             <label for="status">Status : </label>
-            <input type="text" name="catalog_product[status]" id="status">
+            <select id="status" name="catalog_category[status]" class="select-box">
+                            <option value="1"  <?php echo $product_model->getStatus()==1?'selected' :'' ?>>Enabled</option>
+                            <option value="0" <?php echo $product_model->getStatus()==0?'selected' :'' ?>>Disabled</option>
+</select>
         </div>
 
         <div class="row">
             <input type="submit" value="Submit">
         </div>
     </form>
-</body>
-
-</html>

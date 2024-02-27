@@ -21,10 +21,17 @@ class Core_Model_Db_Adapter
                 $this->config["dbname"]
             );
         }
-        // return $this;
+        return $this->connect;
     }
     public function fetchAll($query)
     {
+        $row = [];
+        $sql = mysqli_query($this->connect(),$query);
+        while($_row = mysqli_fetch_assoc($sql))
+        {
+            $row[] =$_row;
+        }
+        return $row;
     }
     public function fetchPairs($query)
     {
@@ -36,7 +43,7 @@ class Core_Model_Db_Adapter
     {
         $row = [];
         $this->connect();
-        $result = mysqli_query($this->connect, $query);
+        $result = mysqli_query($this->connect(), $query);
         while ($_row = mysqli_fetch_assoc($result)) {
             $row = $_row;
         }
@@ -45,9 +52,9 @@ class Core_Model_Db_Adapter
     public function insert($query)
     {
         $this->connect();
-        $sql = mysqli_query($this->connect, $query);
+        $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            return mysqli_insert_id($this->connect);
+            return mysqli_insert_id($this->connect());
         } else {
             return FALSE;
         }
@@ -55,9 +62,9 @@ class Core_Model_Db_Adapter
     public function update($query)
     {
         $this->connect();
-        $sql = mysqli_query($this->connect, $query);
+        $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            echo"<script>alert('Data Update Successfully')</script>";
+            return mysqli_insert_id($this->connect());
         } else {
             return FALSE;
         }
@@ -65,9 +72,9 @@ class Core_Model_Db_Adapter
     public function delete($query)
     {
         $this->connect();
-        $sql = mysqli_query($this->connect, $query);
+        $sql = mysqli_query($this->connect(), $query);
         if ($sql) {
-            echo"<script>alert('Data Delete Successfully')</script>";
+            return mysqli_insert_id($this->connect());
         } else {
             return FALSE;
         }

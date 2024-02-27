@@ -5,6 +5,7 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
     public function includefile($newfile)
     {
         $newfile->addCss("product/productForm.css");
+        $newfile->addCss("product/list.css");
     }
     public function formAction()
     {
@@ -22,12 +23,16 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Front_Action
         $product = Mage::getModel("catalog/product")
             ->setData($data);
         $product->save();
+        $location = Mage::getBaseUrl("admin/catalog_product/list");
+        header("Location: $location");
     }
     public function deleteAction()
     {
         $id = $this->getRequest()->getparams("id");
         $product = Mage::getModel("catalog/product")->load($id);
         $product->delete();
+        $location = Mage::getBaseUrl("admin/catalog_product/list");
+        header("Location: $location");
     }
     public function listAction()
     {

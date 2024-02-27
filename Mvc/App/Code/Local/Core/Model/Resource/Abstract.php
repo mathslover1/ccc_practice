@@ -14,14 +14,14 @@ class Core_Model_Resource_Abstract {
         //    echo $query;
         return $this->getAdapter()->fetchRow($query);
     }
-    public function save(Catalog_Model_Product $product)
+    public function save(Core_Model_Abstract $product)
     {
         $data = $product->getData();
         if(isset($data[$this->getPrimaryKey()]) && !empty($data[$this->getPrimaryKey()])){
             unset($data[$this->getPrimaryKey()]);
             $sql = $this->updateSql(
                 $this->getTableName(),
-                $data, 
+                $data,
                 [$this->getPrimaryKey()=>$product->getId()]
             );
             $id = $this->getAdapter()->update($sql);

@@ -1,0 +1,69 @@
+<h1>Content</h1>
+<pre>
+<?php  
+$product_model = $this->getProduct();
+// print_r($product_model->getId());
+// print_r($product_model->getProName());
+// print_r($product_model->getProCategory());
+// print_r($product_model);
+?>
+</pre>
+
+<html>
+	<head>
+		<title>
+			Forms Example
+		</title>
+	</head>
+	<body>
+		<form action ="<?php echo $this->getUrl('admin/catalog_product/save')?>" method = "post" >
+
+		  <fieldset>
+			<legend>Product informationsss:</legend>
+			<label for="pid">id:</label>
+			<input type="hidden" id="pid" name="pdata[product_id]" required value="<?php echo $product_model->getId()?>" ><br><br>
+			<label for="pname">Product Name:</label>
+			<input type="text" id="pname" name="pdata[product_name]" placeholder="enter product name" required value="<?php echo $product_model->getProductName()?>"><br><br>
+			<label for="sku">SKU:</label>
+			<input type="text" id="sku" name="pdata[sku]" placeholder="enter stock keeping unit"required  value="<?php echo $product_model->getSku()?>"><br><br>
+			<label for="ptype">Product Type:</label>
+			<input type="radio" id="ptype" name="pdata[product_type]" value="simple">Simple</input>
+			<input type="radio" id="ptype" name="pdata[product_type]" value="bundle">Bundle</input>
+			<br><br>
+			<label for="category">Category:</label>
+				<select id="category" name="pdata[category]" >
+				<option value="select">--Select--</option>
+					<option value="Bar & GameRoom">Bar & Game Room</option>
+					<option value="Bedroom">Bedroom</option>
+					<option value="Decor">Decor</option>
+					<option value="Dining & Kitchen">Dining & Kitchen</option>	
+                    <option value="Lighting">Lighting</option>
+                    <option value="Living Room">Living Room</option>
+                    <option value="Mattresses">Mattresses</option>
+                    <option value="Office">Office</option>
+                    <option value="Outdoor">Outdoor</option>
+				</select><br/><br/>
+            <label for="manufactcost">Manufacturer Cost:</label>
+			<input type="text" id="manufactcost" name="pdata[manufacturer_cost]" placeholder="enter manufacturer cost" required  value="<?php echo $product_model->getManufacturerCost()?>"><br><br>
+            <label for="shipcost">Shipping Cost:</label>
+			<input type="text" id="shipcost" name="pdata[shipping_cost]" placeholder="enter shipping cost" required value="<?php echo $product_model->getShippingCost()?>"><br><br>
+            <label for="totalcost">Total Cost:</label>
+			<input type="text" id="totalcost" name="pdata[total_cost]" placeholder="enter total cost" required value="<?php echo $product_model->getManuTotalCost()?>"><br><br>
+            <label for="price">Price:</label>
+			<input type="text" id="price" name="pdata[price]" placeholder="enter price" value="<?php echo $product_model->getPrice()?>"><br><br>
+			<label for="status">Status:</label>
+				<select id="status" name="pdata[status]" >
+				<option value="select">--Select--</option>
+					<option value=" Enabled" > Enabled</option>
+					<option value="Disabled">Disabled</option>
+				</select><br/><br/>	
+            <label for="createddate">Created At:</label>
+			<input type="date" id="createddate" name="pdata[created_at]"><br><br>
+            <label for="updateddate">Updated At:</label>
+            <input type="date" id="updateddate" name="pdata[updated_at]"><br><br>
+			<input type="submit" name="submit" value="submit" />
+			<!-- <input type="submit" name="update" value="update" /> -->
+		  </fieldset>
+		</form>
+	</body>
+</html>

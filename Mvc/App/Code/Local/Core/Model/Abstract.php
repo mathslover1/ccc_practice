@@ -13,6 +13,7 @@ class Core_Model_Abstract  {
     public function init() {
     }
     public function setResourceClass($resourceClass){
+        
     }
     public function setCollectionClass($collectionClass){
     }
@@ -29,7 +30,13 @@ class Core_Model_Abstract  {
         // return new $class;
         return new $this->_resourceClass();
     }
-    public function getCollection(){
+    public function getCollection()
+    {
+        // return new $this->_collectionClass();
+        $collection = new $this->_collectionClass();
+        $collection->setResource($this->getResource());
+        $collection->select();
+        return $collection;
     }
     public function getTableName(){
     }
