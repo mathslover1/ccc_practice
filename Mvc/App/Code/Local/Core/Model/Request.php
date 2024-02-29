@@ -1,80 +1,74 @@
 <?php
 
-class Core_Model_Request{
-    protected $_controllerName,$_actionName,$_moduleName;
-   
-    public function __construct(){
+class Core_Model_Request
+{
+    protected $_controllerName, $_actionName, $_moduleName;
+
+    public function __construct()
+    {
         $requstUri = $this->getRequestUri();
-        $requstUri =array_filter(explode("/",$requstUri));
-        $this->_moduleName     = isset($requstUri[0])?$requstUri[0]:"page";
-        $this->_controllerName = isset($requstUri[1])?$requstUri[1]:"index";
-        $this->_actionName     = isset($requstUri[2])?$requstUri[2]:"index";
+        $requstUri = array_filter(explode("/", $requstUri));
+        $this->_moduleName     = isset($requstUri[0]) ? $requstUri[0] : "page";
+        $this->_controllerName = isset($requstUri[1]) ? $requstUri[1] : "index";
+        $this->_actionName     = isset($requstUri[2]) ? $requstUri[2] : "index";
     }
-    // public function getRequestUri()
-    // {
-    //     $requst = $_SERVER["REQUEST_URI"];
-    //     $uri = str_replace("/Internship/Mvc/", "", $requst);
-    //     if(str_contains($uri, '?'))
-    //     {
-    //         $pos = strpos($uri, '?');
-    //         $temp_uri = substr($uri,$pos);
-    //         $uri = str_replace($temp_uri,"",$uri);
-    //         return $uri;
-    //     }
-    //     return $uri;
-    // }
     public function getRequestUri()
     {
         $requst = $_SERVER["REQUEST_URI"];
         $uri = str_replace("/Internship/Mvc/", "", $requst);
-        if(str_contains($uri,"?")){
-        $uri = stristr($uri, '?', True);
+        if (str_contains($uri, "?")) {
+            $uri = stristr($uri, '?', True);
         }
         return $uri;
     }
-    public function getModuleName(){
+    public function getModuleName()
+    {
         return $this->_moduleName;
     }
-    public function getControllerName(){
+    public function getControllerName()
+    {
         return $this->_controllerName;
     }
-    public function getActionName(){
+    public function getActionName()
+    {
         return $this->_actionName;
     }
-    public function getFullControllerClass(){
-        return implode("_",[ucfirst($this->_moduleName),'Controller',ucfirst($this->_controllerName)]);
+    public function getFullControllerClass()
+    {
+        return implode("_", [ucfirst($this->_moduleName), 'Controller', ucfirst($this->_controllerName)]);
     }
-	public function getParams($key = '', $arg = null) {
-		return ($key == '')
-			? $_REQUEST
-			: (isset($_REQUEST[$key])
-				? $_REQUEST[$key]
-				: ((!is_null($arg)) ? $arg : '')
-			);
-	}
-    public function getPostData($keys=''){
-        return ($keys == '')
-        ? $_POST
-        : (isset($_POST[$keys])
-            ? $_POST[$keys]
-            : ''
-        );
+    public function getParams($key = '', $arg = null)
+    {
+        return ($key == '')
+            ? $_REQUEST
+            : (isset($_REQUEST[$key])
+                ? $_REQUEST[$key]
+                : ((!is_null($arg)) ? $arg : '')
+            );
     }
-    public function getGetData($keys=''){
+    public function getPostData($keys = '')
+    {
         return ($keys == '')
-        ? $_GET
-        : (isset($_GET[$keys])
-            ? $_GET[$keys]
-            : ''
-        );
+            ? $_POST
+            : (isset($_POST[$keys])
+                ? $_POST[$keys]
+                : ''
+            );
+    }
+    public function getGetData($keys = '')
+    {
+        return ($keys == '')
+            ? $_GET
+            : (isset($_GET[$keys])
+                ? $_GET[$keys]
+                : ''
+            );
     }
     public function isPost()
-	{
-		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		    return true;
-		}
-		return false;
-	}
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return true;
+        }
+        return false;
+    }
 }
-
-?>

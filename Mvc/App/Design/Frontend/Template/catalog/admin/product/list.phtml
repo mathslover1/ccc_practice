@@ -1,7 +1,3 @@
-<?php
-$productCollection = Mage::getModel("catalog/product")->getCollection();
-$URL = Mage::getBaseUrl("admin/catalog_product");
-?>
 <div class="table">
     <table border="1">
         <tr>
@@ -13,7 +9,7 @@ $URL = Mage::getBaseUrl("admin/catalog_product");
             <th>Description</th>
             <th>ImageLink</th>
             <th>Link</th>
-            <th>Category ID</th>
+            <th>Category</th>
             <th>Price</th>
             <th>Mfr Cost</th>
             <th>Shipping Cost</th>
@@ -24,7 +20,7 @@ $URL = Mage::getBaseUrl("admin/catalog_product");
             <th>UPDATE</th>
             <th>DELETE</th>
         </tr>
-        <?php foreach ($productCollection->getData() as $product) : ?>
+        <?php foreach ($this->getList() as $product) : ?>
             <tr>
                 <td><?php print_r($product->getProductId()); ?></td>
                 <td><?php print_r($product->getName()); ?></td>
@@ -34,7 +30,7 @@ $URL = Mage::getBaseUrl("admin/catalog_product");
                 <td><?php print_r($product->getDescription()); ?></td>
                 <td><?php print_r($product->getImageLink()); ?></td>
                 <td><?php print_r($product->getLink()); ?></td>
-                <td><?php print_r($product->getCategoryId()); ?></td>
+                <td><?php print_r($this->getCategoryNameById(($product->getCategoryId()))); ?></td>
                 <td><?php print_r($product->getPrice()); ?></td>
                 <td><?php print_r($product->getMfrCost()); ?></td>
                 <td><?php print_r($product->getShippingCost()); ?></td>
@@ -43,10 +39,10 @@ $URL = Mage::getBaseUrl("admin/catalog_product");
                 <td><?php print_r($product->getMinPrice()); ?></td>
                 <td><?php print_r($product->getStatuses()); ?></td>
                 <td>
-                    <a href="<?php echo $URL; ?>/form?id=<?php print_r($product->getProductId()); ?>" class="button">Update</a>
-                </td>
+                    <a href="<?php echo$this->getUrl2();?>/form?id=<?php print_r($product->getProductId()); ?>" class="button">Update</a>
+        </td>
                 <td>
-                    <a href="<?php echo $URL; ?>/delete?id=<?php print_r($product->getProductId()); ?>" class="button">Delete</a>
+                    <a href="<?php echo$this->getUrl2();?>/delete?id=<?php print_r($product->getProductId()); ?>" class="button">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -8,7 +8,7 @@ class Page_Block_Head extends Core_Block_Template
         $this->setTemplate("page/head.phtml");
     }
     public function addJs($file){
-        $this->_js[] = $file;
+        $this->_js[] = '/skin/js/'.$file;
     }
     public function addCss($file)
     {

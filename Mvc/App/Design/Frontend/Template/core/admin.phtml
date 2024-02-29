@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>MVC</title>
+    <?php
+    $this->getChildHtml('head');
+    ?>
+</head>
+
+<body>
+
+    <div> Admin 
+        <header><?php $this->getChildHtml('header'); ?> </header>
+    </div>
+    <div><?php $this->getChildHtml('content'); ?> </div>
+    <div><?php $this->getChildHtml('messages'); ?> </div>
+    <div>
+        <footer><?php $this->getChildHtml('footer'); ?> </footer>
+    </div>
+
+</body>
+
+</html>

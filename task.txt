@@ -1,0 +1,23 @@
+admin/banner/form
+    file path = root folder>media/banner>xyz.jpg
+    store xyz.jpg in databases
+
+
+admin/banner/list
+    list all banner here with edit and delete
+    edit will open form and user can see image 
+
+    Module 
+     banner
+
+show in page/index/index action or home page url 
+under content child 
+
+catalog/category/view?id=1
+//all the product with the category 1 
+
+catalog/product/view?id=1
+//product details, quantity box and add to cart button except cost
+
+on submit of add to cart button product_id & quantity 
+sales/quote/add only postdata 

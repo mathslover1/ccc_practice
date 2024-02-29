@@ -1,11 +1,4 @@
-<?php 
-
-$productCollection = Mage::getModel("catalog/category")->getCollection();
-$URL = Mage::getBaseUrl("admin/catalog_category");
-?>
-<html>
-    <body>
-<div class="table">
+<div class="table vivek">
     <table border="1">
         <tr>
             <th>Id</th>
@@ -14,7 +7,7 @@ $URL = Mage::getBaseUrl("admin/catalog_category");
             <th>UPDATE</th>
             <th>DELETE</th>
         </tr>
-    <?php foreach ($productCollection->getData() as $product):?>
+    <?php foreach ($this->getList() as $product):?>
         <tr>
             <td>
                 <?php print_r($product->getCategoryId());
@@ -27,14 +20,12 @@ $URL = Mage::getBaseUrl("admin/catalog_category");
                 <?php print_r($product->getStatuses()); ?>
             </td>
             <td>
-                <a href="<?php echo $URL; ?>/form?id=<?php print_r($product->getCategoryId());?>" type="button" id="update" class="button"> Update </a>
+                <a href="<?php echo$this->getUrl1();?>/form?id=<?php print_r($product->getCategoryId());?>" type="button" id="update" class="button"> Update </a>
             </td>
             <td>
-                <a href="<?php echo $URL; ?>/delete?id=<?php print_r($product->getCategoryId());?>" type="button" id="delete" class="button"> Delete </a>
+                <a href="<?php echo$this->getUrl1();?>/delete?id=<?php print_r($product->getCategoryId());?>" type="button" id="delete" class="button"> Delete </a>
             </td>
         </tr>
         <?php endforeach;?>
     </table>
 </div>
-</body>
-</html>

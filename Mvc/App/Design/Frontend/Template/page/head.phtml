@@ -1,14 +1,17 @@
-       <?php $js = $this->getJs(); ?>
-        <?php if(count($js)):  ?>
-            <?php foreach($js as $_js): ?>
-                <script type="" src="<?php  Mage::getBaseUrl().$_js; ?>"></script>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            <?php $css = $this->getCss();
-    if(count($css)):
-    foreach($css as $_css): ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl($_css); ?>" ></link>
-    <?php endforeach;
-    endif;?>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <?php $js = $this->getJs();
+        if (count($js)) :
+            foreach ($js as $_js) : ?>
+               <script type="text/javascript" src="<?php echo Mage::getBaseUrl() . $_js; ?>"></script>
+       <?php endforeach;
+        endif; ?>
+
+       <?php $css = $this->getCss();
+        if (count($css)) :
+            foreach ($css as $_css) : ?>
+               <link rel="stylesheet" type="text/css" href="<?php echo Mage::getBaseUrl($_css); ?>">
+               </link>
+       <?php endforeach;
+        endif; ?>
+
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,5 +1,7 @@
 <?php
-$product_model = $this->getProduct();    
+$product_model = $this->getProduct();
+// Mage::getSingleton('core/session')->set('customerId', 1); 
+// echo Mage::getSingleton('core/session')->get('customerId');
 ?>
 <div class="form" style="border:1px solid black; width:30vw; padding: 15px">
     <h2>Product Form</h2>
@@ -42,8 +44,15 @@ $product_model = $this->getProduct();
             <input type="text" name="Catalog_product[link]" id="link" value="<?php echo $product_model->getLink()?>">
         </div>
         <div class="row">
-            <label for="link">Category Id : </label>
-            <input type="text" name="Catalog_product[category_id]" id="category_id" value="<?php echo $product_model->getCategoryId()?>">
+            <label for="category_id">Category: </label>
+            <select name="Catalog_product[category_id]" id="category_id" class="select-box">
+                        <option value="">---------SELECT---------</option>
+                        <?php foreach ($this->getCategoryNm() as $category) : ?>
+                            <option value="<?php echo $category->getCategoryId() ?>" <?php echo $category->getCategoryId() == $product_model->getCategoryId() ? 'selected' : ''; ?>>
+                                <?php echo $category->getCategoryName(); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
         </div>
         <div class="row">
             <label for="price">Price : </label>

@@ -16,6 +16,5 @@ class Page_Controller_Index extends Core_Controller_Front_Action
                     ->addChild('banner1',$banner);
                     
         $layout->toHtml();
-        // print_r($layout);
     }
 }

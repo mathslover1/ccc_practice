@@ -3,6 +3,7 @@
 class Core_Model_Abstract  {
     protected $_data = [];
     protected $_resourceClass = '';
+    protected $_modelClass = '';
     protected $_collectionClass = '';
     protected $_resource = null;
     protected $_collection = null;
@@ -25,9 +26,6 @@ class Core_Model_Abstract  {
     }
     public function getResource()
     {
-        // $modelClass = get_class($this);
-        // $class = substr($modelClass, 0, strpos($modelClass, '_Model_') + 6) . '_Resource_' . substr($modelClass, strpos($modelClass, '_Model_') + 7);
-        // return new $class;
         return new $this->_resourceClass();
     }
     public function getCollection()
@@ -35,6 +33,7 @@ class Core_Model_Abstract  {
         // return new $this->_collectionClass();
         $collection = new $this->_collectionClass();
         $collection->setResource($this->getResource());
+        $collection->setModelClass($this->_modelClass);
         $collection->select();
         return $collection;
     }

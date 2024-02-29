@@ -36,3 +36,7 @@ td {
 .button:hover {
     background-color: #ddd;
 }
+.vivek{
+    display: flex;
+    justify-content: center;
+}
