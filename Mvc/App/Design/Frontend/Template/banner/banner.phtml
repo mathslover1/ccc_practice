@@ -1,1 +1,6 @@
-banner html
+<?php
+$URL = Mage::getBaseUrl('admin/banner');
+        foreach ($this->getBanner() as $banner) { ?>
+        <?php $a = $banner->getBannerImage(); ?>
+                    <img src="<?php echo Mage::getBaseUrl("media/banner/") . $a; ?>" style="width:200px;">
+                    <?php } ?>

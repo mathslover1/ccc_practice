@@ -3,8 +3,8 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
 {
     public function includefile($newfile)
     {
-        $newfile->addCss("category/form.css");
-        $newfile->addCss("category/list.css");
+        $newfile->addCss("catalog/admin/category/form.css");
+        $newfile->addCss("catalog/admin/category/list.css");
     }
     public function formAction()
     {
@@ -43,5 +43,6 @@ class Admin_Controller_Catalog_Category extends Core_Controller_Admin_Action
         $child->addChild('list', $categoryForm);
         $layout->toHtml();
     }
+
 }
 ?>

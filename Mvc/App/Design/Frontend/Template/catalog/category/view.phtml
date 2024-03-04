@@ -1,0 +1,28 @@
+<div class="prodcard">
+    <?php foreach ($this->getItem() as $product) { ?>
+        <div class="card">
+            <img src="<?php echo $this->getImagePath().$product->getImageLink();; ?>" alt="Product Image">
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <td>
+                        <?php echo $product->getProductId(); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Sku</th>
+                    <td>
+                        <?php echo $product->getSku(); ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td class="<?php echo ($product->getStatuses() == 'Enabled') ? 'status-active' : 'status-inactive'; ?>">
+                        <?php echo $product->getStatuses(); ?>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    <?php } ?>
+</div>

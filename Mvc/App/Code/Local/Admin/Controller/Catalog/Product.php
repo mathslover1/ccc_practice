@@ -2,11 +2,11 @@
 
 class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
 {
-    protected $_allowedAction = ['form'];
+    protected $_allowedAction = [];
     public function includefile($newfile)
     {
-        $newfile->addCss("product/productForm.css");
-        $newfile->addCss("product/list.css");
+        $newfile->addCss("catalog/admin/product/productForm.css");
+        $newfile->addCss("catalog/admin/product/list.css");
     }
     public function formAction()
     {

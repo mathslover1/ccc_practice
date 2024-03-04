@@ -7,6 +7,11 @@ class Catalog_Block_Admin_Product_List extends Core_Block_Template
     }
     public function getList()
     {
+        $id = $this->getRequest()->getParams('id');
+        if($id){
+            $list =  Mage::getModel("catalog/product")->getCollection()->addFieldToFilter('category_id',$id);
+            return $list->getData();
+        }
         $list =  Mage::getModel("catalog/product")->getCollection();
         return $list->getData();
     }

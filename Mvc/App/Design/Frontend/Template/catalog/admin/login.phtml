@@ -1,0 +1,18 @@
+<div class="form">
+    <h2>Admin Login</h2>
+    <form method="POST" action="<?php echo $this->getUrl('admin/user/login') ?>">
+        <div class="row">
+            <div>
+                <label for="admin_email">Email:</label>
+                <input type="text" value="" name="admin[admin_email]" id="admin_email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" value="" name="admin[password]" id="password">
+            </div>
+        </div>
+        <div>
+            <input type="submit" name="submit" value="Submit">
+        </div>
+    </form>
+</div>

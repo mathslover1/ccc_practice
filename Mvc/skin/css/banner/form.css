@@ -1,0 +1,63 @@
+body {
+    color: rgb(0, 0, 0);
+    font-family: "Outfit", sans-serif;
+    background-color: #84f2a6a6;
+  }
+  .form {
+    background-color: #69bf3e;
+    border-radius: 10px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 500px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 4px;
+  }
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+    margin-left: 30px;
+  }
+  
+  select {
+    width: 265px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .bannerimg {
+    margin-left: 6px;
+    width: 150px;
+  }
+  input[type="text"],
+  input[type="file"] {
+    width: 250px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: rgb(18, 140, 46);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 30px;
+  }
+  .wrapper {
+    min-height: 48vh;
+  }
+  

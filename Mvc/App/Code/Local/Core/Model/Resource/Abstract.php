@@ -38,6 +38,39 @@ class Core_Model_Resource_Abstract {
         $sql = $this->deleteSql($this->getTableName(),$where);
         return $this->getAdapter()->delete($sql);
     }
+    // public function insertSql($tablename, array $data)
+    // {
+    //     $columns = $values = [];
+    //     foreach ($data as $col => $val) {
+    //         $columns[] = "`$col`";
+    //         // print_r($data); die;
+    //         // Check if the current value is for the image
+    //         // if ($col == 'banner_image' && isset($_FILES[$val])) {
+    //         //     echo 12;
+    //             $values[] = "'" . addslashes($this->moveUploadedFile($_FILES[$val])) . "'";
+    //         // } else {
+    //         //     echo 23;
+    //         //     $values[] = "'" . addslashes($val) . "'";
+    //         // }
+    //     }
+    //     $columns = implode(", ", $columns);
+    //     $values = implode(", ", $values);
+    //     return "INSERT INTO {$tablename} ({$columns}) VALUES ({$values})";
+    // }
+   
+    // public function moveUploadedFile($file)
+    // {
+
+    //             $newImageName = uniqid() . '.';
+    //             $destination =$newImageName;
+    //             move_uploaded_file($file['tmp_name'],$destination);
+    //             if (move_uploaded_file($file['tmp_name'], $destination)) {
+    //                 return $newImageName;
+    //             } else {
+    //                 return null;
+    //             }
+    // }       
+
     public function insertSql($tablename, array $data)
     {
         $columns = $values = [];
