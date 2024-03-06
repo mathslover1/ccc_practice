@@ -1,0 +1,39 @@
+
+<div class="form" style="border:1px solid black; width:30vw; padding: 15px">
+    <h2>Temperature Converter</h2>
+    <form method="POST" action="<?php echo $this->getUrl('tempconverter/tempconverter/save'); ?>">
+        <div class="row">
+            <input type="hidden" name="temperature[id]" value="<?php #echo $product_model->getProductId()?>">
+        </div>
+        <div class="row">
+            <input type="hidden" name="temperature[session_id]" value="<?php echo $this->getSessionId()?>">
+        </div>
+        <div class="row">
+            <label for="sku">Use Name : </label>
+            <input type="text" name="temperature[user_name]" id="sku" value="<?php #echo $product_model->getSku()?>" >
+        </div>
+        <div class="row">
+            <label for="name">Temperature: </label>
+            <input type="text" name="temperature[temprature]" id="name" value="<?php #echo $product_model->getName()?>">
+        </div>
+
+        <div class="row">
+            <label for="unit">Unit : </label>
+            <select id="unit" name="temperature[unit]" class="select-box">
+                            <option value="Celsius"  <?php #echo $product_model->getStatus()==1?'selected' :'' ?>>Celsius</option>
+                            <option value="Fahrenheit" <?php # echo $product_model->getStatus()==0?'selected' :'' ?>>Fahrenheit</option>
+                            <option value="Kelvin" <?php #echo $product_model->getStatus()==0?'selected' :'' ?>>Kelvin</option>
+                        </select>
+        </div>
+        <div class="row">
+            <label for="convert_unit">Convert Unit : </label>
+            <select id="convert_unit" name="temperature[convert_unit]" class="select-box">
+                            <option value="Celsius"  <?php #echo $product_model->getStatus()==1?'selected' :'' ?>>Celsius</option>
+                            <option value="Fahrenheit" <?php # echo $product_model->getStatus()==0?'selected' :'' ?>>Fahrenheit</option>
+                            <option value="Kelvin" <?php #echo $product_model->getStatus()==0?'selected' :'' ?>>Kelvin</option>
+                        </select>
+        <div class="row">
+            <input type="submit" value="Convert">
+        </div>
+    </form>
+</div>

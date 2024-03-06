@@ -1,0 +1,23 @@
+<div class="table">
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Temprature</th>
+            <th>unit</th>
+            <th>Convert Unit</th>
+            <th>result</th>
+        </tr>
+        <?php foreach ($this->getList() as $product) : ?>
+            <tr>
+                <td><?php print_r($product->getId()); ?></td>
+                <td><?php print_r($product->getUserName()); ?></td>
+                <td><?php print_r($product->getTemprature()); ?></td>
+                <td><?php print_r($product->getUnit()); ?></td>
+                <td><?php print_r($product->getConvertUnit()); ?></td>
+                <td><?php print_r($product->getResult()); ?></td>
+            
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>

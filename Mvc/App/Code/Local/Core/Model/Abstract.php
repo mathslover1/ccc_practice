@@ -1,27 +1,33 @@
 <?php
 
-class Core_Model_Abstract  {
+class Core_Model_Abstract
+{
     protected $_data = [];
     protected $_resourceClass = '';
     protected $_modelClass = '';
     protected $_collectionClass = '';
     protected $_resource = null;
     protected $_collection = null;
-    public function __construct() {
+    public function __construct()
+    {
         $this->init();
     }
-    
-    public function init() {
+
+    public function init()
+    {
     }
-    public function setResourceClass($resourceClass){
-        
+    public function setResourceClass($resourceClass)
+    {
     }
-    public function setCollectionClass($collectionClass){
+    public function setCollectionClass($collectionClass)
+    {
     }
-    public function setId($id){
+    public function setId($id)
+    {
         return $this->_data[$this->getResource()->getPrimaryKey()] = $id;
     }
-    public function getId(){
+    public function getId()
+    {
         return $this->_data[$this->getResource()->getPrimaryKey()];
     }
     public function getResource()
@@ -37,39 +43,58 @@ class Core_Model_Abstract  {
         $collection->select();
         return $collection;
     }
-    public function getTableName(){
+    public function getTableName()
+    {
     }
-    public function __set($key, $value){
+    public function __set($key, $value)
+    {
     }
-    public function __get($key){
+    public function __get($key)
+    {
     }
-    public function __unset($key){
+    public function __unset($key)
+    {
     }
-    public function getData($key=null){
+    public function getData($key = null)
+    {
         return $this->_data;
     }
-    public function setData($data){
-        $this->_data = $data ; 
-        return $this; 
+    public function setData($data)
+    {
+        $this->_data = $data;
+        return $this;
     }
-    public function addData($key, $value){
+    public function addData($key, $value)
+    {
+        $this->_data[$key] = $value;
+        return $this;
     }
-    public function removeData($key = null){
+    public function removeData($key = null)
+    {
+        if (isset($this->_data[$key])) {
+            unset($this->_data[$key]);
+        }
+        return $this;   
     }
-    public function save(){
+    public function save()
+    {
+        $this->_beforeSave();
         $this->getResource()->save($this);
+        $this->_afterSave();
         return $this;
     }
-    public function load($id, $column=null){
-       $this->_data = $this->getResource()->load($id, $column);
+    public function load($id, $column = null)
+    {
+        $this->_data = $this->getResource()->load($id, $column);
         return $this;
     }
-        public function delete(){
-            if($this->getId()){
+    public function delete()
+    {
+        if ($this->getId()) {
             $this->getResource()->delete($this);
         }
-            return $this;
-        }
+        return $this;
+    }
     public function camelCase2UnderScore($str, $separator = "_")
     {
         if (empty($str)) {
@@ -79,12 +104,11 @@ class Core_Model_Abstract  {
         $str = preg_replace("/[A-Z]/", $separator . "$0", $str);
         return strtolower($str);
     }
-    public function __call($method,$args)
+    public function __call($method, $args)
     {
-        $name = $this->camelCase2UnderScore(substr($method,3));
+        $name = $this->camelCase2UnderScore(substr($method, 3));
         return isset($this->_data[$name])
-        ?$this->_data[$name]
-        : '';
+            ? $this->_data[$name]
+            : '';
     }
 }
-?>

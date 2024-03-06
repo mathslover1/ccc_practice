@@ -28,7 +28,7 @@ class Core_Block_Template extends Core_Block_Abstract
     public function getChildHtml($key)
     {
         $html = '';
-        if ($key == '' && count($this->_child)) {
+        if ($key == '' && count($this->_child)){
             foreach ($this->_child as $_child) {
                 $html .= $_child->toHtml();
             }

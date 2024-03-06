@@ -40,7 +40,7 @@ class Core_Model_Db_Adapter
     {
     }
     public function fetchRow($query)
-    {
+    {   
         $row = [];
         $this->connect();
         $result = mysqli_query($this->connect(), $query);

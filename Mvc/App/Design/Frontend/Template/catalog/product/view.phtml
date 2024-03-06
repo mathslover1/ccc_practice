@@ -1,4 +1,3 @@
-
 <table border="1px">
     <tr>
         <th>Product Id</th>
@@ -9,6 +8,7 @@
         <th colspan=2>AddTocart</th>
     </tr>
     <?php foreach ($this->getItem() as $product) { ?>
+        <tr>
         <td>
             <?php echo $product->getProductId(); ?>
         </td>
@@ -31,11 +31,11 @@
                 <div class="form">
                     <?php //$categoryModel = $this->getCategoryForm();                         ?>
                     <div class="row">
-                        <input type="hidden" name="sales[product_id]" value="<?php echo $product->getProductId(); ?>">
+                        <input type="hidden" name="cart[product_id]" value="<?php echo $product->getProductId(); ?>">
                     </div>
                     <div class="row">
                         <label for="quentity">Quentity : </label>
-                        <input type="text" name="sales[quentity]" id="quentity"
+                        <input type="text" name="cart[qty]" id="quentity"
                             value="<?php //echo $product->getQuentity();                         ?>">
                     </div>
                 </div>
@@ -47,5 +47,6 @@
             </td>
         </form>
 
+    </tr>
     <?php } ?>
 </table>
