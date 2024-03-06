@@ -24,6 +24,7 @@ class Tempconverter_Controller_Tempconverter extends Core_Controller_Front_Actio
         $data = $this->getRequest()->getParams('temperature');
         $productModel = Mage::getModel('tempconverter/tempconverter');
         $productModel->setData($data)->save();
+        Mage::getSingleton('core/session')->set('User_name',$data["user_name"]);
         $this->setRedirect('tempconverter/Tempconverter/list');
     }
     public function dashboardAction()

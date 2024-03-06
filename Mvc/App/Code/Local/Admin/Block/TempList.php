@@ -8,7 +8,7 @@ class Admin_Block_TempList extends Core_Block_Template
     }
     public function getList()
     {
-        $list =  Mage::getModel("tempconverter/tempconverter")->getCollection();
+        $list =  Mage::getModel("tempconverter/tempconverter")->getCollection()->addFieldToFilter('unit','Kelvin');
         return $list->getData();
     }
 

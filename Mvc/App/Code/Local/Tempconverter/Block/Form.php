@@ -13,4 +13,19 @@ class Tempconverter_Block_Form extends Core_Block_Template
     {
         return Mage::getSingleton('core/session')->getId();
     }
+    public function getUnit(){
+        $units = array(
+            "Celsius" => "Celsius",
+            "Fahrenheit" => "Fahrenheit",
+            "Kelvin" => "Kelvin"
+        );
+        echo '<select id="unit" name="temperature[unit]" class="select-box">';
+        foreach ($units as $value => $label) {
+            echo '<option value="' . $value . '" ' . '>' . $label . '</option>';
+        }
+        echo '</select>';
+    }
+    public function userName(){
+        echo  Mage::getSingleton('core/session')->get('User_name');
+    }
 }

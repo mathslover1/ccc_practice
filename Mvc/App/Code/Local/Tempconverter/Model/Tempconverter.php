@@ -6,44 +6,40 @@ class Tempconverter_Model_Tempconverter extends Core_Model_Abstract  {
         $this->_modelClass = 'tempconverter/tempconverter';
     }
     protected function _beforeSave(){
-        foreach($this->getCollection()->getData() as $_item){
-            $item = $_item;
-        }
-        if($item->getUnit()=="Celsius" && $item->getConvertUnit()=="Celsius"){
-            $result =  $item->getTemprature(); 
-            $this->addData('result', $result);
-            
-        }
-        elseif($item->getUnit()=="Celsius" && $item->getConvertUnit()=="Fahrenheit"){
-            $result =  (9 / 5 * $item->getTemprature()) + 32; 
+        if($this->getUnit()=="Celsius" && $this->getConvertUnit()=="Celsius"){
+            $result =  $this->getTemprature(); 
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Celsius" && $item->getConvertUnit()=="Kelvin"){
-            $result =  $item->getTemprature() + 273.15 ; 
+        elseif($this->getUnit()=="Celsius" && $this->getConvertUnit()=="Fahrenheit"){
+            $result =  (9 / 5 * $this->getTemprature()) + 32; 
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Fahrenheit" && $item->getConvertUnit()=="Celsius"){
-            $result =  (5 / 9 * $item->getTemprature())-32;  
+        elseif($this->getUnit()=="Celsius" && $this->getConvertUnit()=="Kelvin"){
+            $result =  $this->getTemprature() + 273.15 ; 
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Fahrenheit" && $item->getConvertUnit()=="Fahrenheit"){
-            $result =  $item->getTemprature(); 
+        elseif($this->getUnit()=="Fahrenheit" && $this->getConvertUnit()=="Celsius"){
+            $result =  (5 / 9 * $this->getTemprature())-32;  
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Fahrenheit" && $item->getConvertUnit()=="Kelvin"){
-            $result =  5 / 9 * ($item->getTemprature() - 32) + 273.15; 
+        elseif($this->getUnit()=="Fahrenheit" && $this->getConvertUnit()=="Fahrenheit"){
+            $result =  $this->getTemprature(); 
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Kelvin" && $item->getConvertUnit()=="Celsius"){
-            $result =  $item->getTemprature() - 273.15; 
+        elseif($this->getUnit()=="Fahrenheit" && $this->getConvertUnit()=="Kelvin"){
+            $result =  5 / 9 * ($this->getTemprature() - 32) + 273.15; 
             $this->addData('result', $result);
         }
-        elseif($item->getUnit()=="Kelvin" && $item->getConvertUnit()=="Fahrenheit"){
-            $result = ($item->getTemprature() - 273.15)  * (9 / 5) + 32  ;
+        elseif($this->getUnit()=="Kelvin" && $this->getConvertUnit()=="Celsius"){
+            $result =  $this->getTemprature() - 273.15; 
+            $this->addData('result', $result);
+        }
+        elseif($this->getUnit()=="Kelvin" && $this->getConvertUnit()=="Fahrenheit"){
+            $result = ($this->getTemprature() - 273.15)  * (9 / 5) + 32  ;
             $this->addData('result', $result); 
         }
-        elseif($item->getUnit()=="Kelvin" && $item->getConvertUnit()=="Kelvin"){
-            $result = $item->getTemprature() ; 
+        elseif($this->getUnit()=="Kelvin" && $this->getConvertUnit()=="Kelvin"){
+            $result = $this->getTemprature() ; 
             $this->addData('result', $result);
         }
     }
