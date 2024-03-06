@@ -1,10 +1,10 @@
 <?php
-class Tempconverter_Block_List extends Core_Block_Template
+class Admin_Block_Temp_List extends Core_Block_Template
 {
 
     public function __construct()
     {
-        $this->setTemplate("tempconverter/list.phtml");
+        $this->setTemplate("tempconverter/admin/list.phtml");
     }
     public function getList()
     {
