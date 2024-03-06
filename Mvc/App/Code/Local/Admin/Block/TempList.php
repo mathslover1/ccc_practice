@@ -1,5 +1,5 @@
 <?php
-class Admin_Block_Temp_List extends Core_Block_Template
+class Admin_Block_TempList extends Core_Block_Template
 {
 
     public function __construct()
