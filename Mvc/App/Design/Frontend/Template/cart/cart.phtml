@@ -1,52 +1,46 @@
-<div class="card">
-    <div class="row">
-        <div class="col-md-8 cart">
-            <div class="title">
-                <div class="row">
-                    <div class="col">
-                        <h4><b>Shopping Cart</b></h4>
-                    </div>
-                    <div class="col align-self-center text-right text-muted"> </div>
-                </div>
-            </div>
-            <pre>
-                <div class="row border-top border-bottom">
-                    <?php
-                        foreach ($this->getItemList()->getData() as $item):
-                            $product = $this->getProductList()->addFieldToFilter('product_id',$item->getProductId())->getData();
-                    ?>
-                        <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid"><?php print_r($product); ?></div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-
-            <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-        </div>
-        <div class="col-md-4 summary">
-            <div>
-                <h5><b>Summary</b></h5>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS </div>
-                <div class="col text-right">&euro; 132.00</div>
-            </div>
-            <form>
-                <p>SHIPPING</p>
-                <select>
-                    <option class="text-muted">Standard-Delivery- &euro;5.00</option>
-                </select>
-                <p>GIVE CODE</p>
-                <input id="code" placeholder="Enter your code">
-            </form>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&euro; 137.00</div>
-            </div>
-            <button class="btn">CHECKOUT</button>
-        </div>
+      <div class="row border-top border-bottom">
+          <?php
+          $total=0;
+            foreach ($this->getItemList()->getData() as $item) :
+                $product = $this->getProductList()->addFieldToFilter('product_id', $item->getProductId())->getData()[0];
+            ?>
+              <div class="row main align-items-center">
+                  <form action="<?php echo Mage::getBaseUrl('sales/quote/add')?>" method="post">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>Product</th>
+                                  <th>Price</th>
+                                  <th>Quantity</th>
+                                  <th>Total</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <pre>
+                    <td><?php print_r($product->getName()); ?></td>
+                    <td><?php print_r($product->getPrice()); ?></td>
+                    <input type="hidden" name="cart[product_id]" value="<?php echo $product->getProductId(); ?>">
+                    <input type="hidden" name="cart[quote_id]" value="<?php echo $item->getQuoteId(); ?>">
+                    <input type="hidden" name="cart[item_id]" value="<?php echo $item->getItemId(); ?>">
+                    <td><input type="number" name="cart[qty]" value="<?php print_r($item->getQty()); ?>" min="1"></td>
+                    <td><?php print_r($item->getRowTotal()); ?></td>
+                    <td>
+                        <button class="button" type="submit" name="update">Update</button>
+                        <a href="<?php echo Mage::getBaseUrl('sales/quote/delete');?>?quote_id=<?php print_r($item->getQuoteId()); ?>&item_id=<?php print_r($item->getItemId()); ?>" class="button" type="submit" name="remove">Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+              </div>
+              <?php $total += $item->getRowTotal();
+           endforeach; ?>
+          <div class="row main align-items-center button-container">
+          <tr>
+            <th>Total:   </th><th><?php print_r($total); ?></th>
+        <a href="<?php echo Mage::getBaseUrl('catalog/product/view');?>" class="button">Back</a>
+          </tr>
     </div>
-
-</div>
-<br>
+      </div>

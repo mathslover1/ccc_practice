@@ -21,33 +21,26 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
             $price = $this->getProduct()->getPrice();
             $this->addData('price', $price);
             $this->addData('row_total', $price * $this->getQty());
-        } else {
-            echo 13; die;
         }
     }
-    public function addItem(Sales_Model_Quote $quote, $productId, $qty)
+    public function addItem(Sales_Model_Quote $quote, $productId, $qty, $itemId = null)
     {
         $item = $this->getCollection()
             ->addFieldToFilter('product_id', $productId)
             ->addFieldToFilter('quote_id', $quote->getId())
-            ->getFirstItem()
-        ;
-
-        if ($item) {
-            $qty = $qty + $item->getQty();
-        }
-        $this->setData(
-            [
-                'quote_id' => $quote->getId(),
-                'product_id' => $productId,
-                'qty' => $qty,
-            ]
-        );
-        if ($item) {
-            $this->setId($item->getId());
-        }
+            ->getFirstItem();
+            if ($item) {
+                if (!$itemId) {
+                    $qty += $item->getQty();
+                    $this->setId($item->getId());
+                } else {
+                    $this->setId($itemId);
+                }
+            }
+            $this->addData('product_id', $productId)
+                ->addData('quote_id', $quote->getId())
+                ->addData('qty', $qty);
         $this->save();
-
         return $this;
     }
     public function deleteItem($quoteId, $itemId)
@@ -55,35 +48,12 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
         $item = $this->getCollection()
             ->addFieldToFilter('quote_id', $quoteId)
             ->addFieldToFilter('item_id', $itemId)
-            ->getFirstItem()
-        ;
+            ->getFirstItem();
         if ($item) {
             $this->setId($item->getId());
         }
         $this->delete();
 
-        return $this;
-    }
-    public function updateItem(Sales_Model_Quote $quote, $quoteId, $productId, $qty,$itemId)
-    {
-        $item = $this->getCollection()
-            ->addFieldToFilter('item_id', $itemId)
-            ->addFieldToFilter('quote_id', $quoteId)
-            ->addFieldToFilter('product_id', $productId)
-            ->getFirstItem()
-        ;
-        $this->setData(
-            [
-                'quote_id' => $quoteId,
-                'product_id' => $productId,
-                'item_id' => $itemId,
-                'qty' => $qty,
-            ]
-        );
-        if ($item) {
-            $this->setId($item->getId());
-        }
-        $this->save();
         return $this;
     }
 }

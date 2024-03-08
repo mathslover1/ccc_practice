@@ -20,8 +20,7 @@ class Core_Model_Resource_Abstract {
     {
         $data = $product->getData();
         if(isset($data[$this->getPrimaryKey()]) && !empty($data[$this->getPrimaryKey()])){
-            
-            // unset($data[$this->getPrimaryKey()]);
+        
             $sql = $this->updateSql(
                 $this->getTableName(),
                 $data,

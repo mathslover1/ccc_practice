@@ -10,29 +10,31 @@ class Sales_Model_Quote extends Core_Model_Abstract
     }
     public function initQuote()
     {
-        $quoteId  = Mage::getSingleton('core/session')->get('quote_id',0);
+        $quote = Mage::getModel("sales/quote")
+            ->setData(["tax_percent" => 8, "grand_total" => 0])
+            ->save();
+        $quoteId  = Mage::getSingleton('core/session')->get('quote_id', 0);
         $this->load($quoteId);
         if (!$this->getId()) {
-            $quote = Mage::getModel("sales/quote")
-                ->setData(["tax_percent" => 8, "grand_total" => 0])
-                ->save();
             Mage::getSingleton("core/session")->set("quote_id", $quote->getId());
-            $quoteId = $quote->getId(); 
+            $quoteId = $quote->getId();
             $this->load($quoteId);
         }
         return $this;
     }
-    public function getItemCollection(){
+    public function getItemCollection()
+    {
         return Mage::getModel('sales/quote_item')->getCollection()
             ->addFieldToFilter('quote_id', $this->getId());
     }
-    protected function _beforeSave(){
+    protected function _beforeSave()
+    {
         $grandTotal = 0;
-        foreach($this->getItemCollection()->getData() as $_item){
+        foreach ($this->getItemCollection()->getData() as $_item) {
             $grandTotal += $_item->getRowTotal();
         }
-        if($this->getTaxPercent()){ 
-            $tax = round($grandTotal / $this->getTaxPercent(),2);
+        if ($this->getTaxPercent()) {
+            $tax = round($grandTotal / $this->getTaxPercent(), 2);
             $grandTotal = $grandTotal + $tax;
         }
         $this->addData('grand_total', $grandTotal);
@@ -40,25 +42,25 @@ class Sales_Model_Quote extends Core_Model_Abstract
 
     public function addProduct($request)
     {
+        
         $this->initQuote();
-        if($this->getId()) {
-            Mage::getModel("sales/quote_item")->addItem($this,$request['product_id'],$request['qty']);
+        if ($this->getId()) {
+            Mage::getModel("sales/quote_item")
+                ->addItem(
+                    $this,
+                    $request['product_id'],
+                    $request['qty'],
+                    isset($request['item_id'])
+                    ? $request['item_id'] : null
+                );
         }
         $this->save();
     }
     public function deleteProduct($request)
     {
         $this->initQuote();
-        if($this->getId()) {
-            Mage::getModel("sales/quote_item")->deleteItem($request['quote_id'],$request['item_id']);
-        }
-        $this->save();
-    }
-    public function updateProduct($request)
-    {
-        $this->initQuote();
-        if($this->getId()) {
-            Mage::getModel("sales/quote_item")->updateItem($this,$request['quote_id'],$request['product_id'],$request['qty'],$request['item_id']);
+        if ($this->getId()) {
+            Mage::getModel("sales/quote_item")->deleteItem($request['quote_id'], $request['item_id']);
         }
         $this->save();
     }
