@@ -29,7 +29,10 @@
                 <td><?php print_r($product->getSize()); ?></td>
                 <td><?php print_r($product->getDescription()); ?></td>
                 <td><?php print_r($product->getImageLink()); ?></td>
-                <td><?php print_r($product->getLink()); ?></td>
+                <td>
+                     <?php $a = $product->getImageLink(); ?>
+                    <img src="<?php echo Mage::getBaseUrl("media/product/") . $a; ?>" class="banner-image">
+                </td>
                 <td><?php print_r($this->getCategoryNameById(($product->getCategoryId()))); ?></td>
                 <td><?php print_r($product->getPrice()); ?></td>
                 <td><?php print_r($product->getMfrCost()); ?></td>

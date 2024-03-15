@@ -12,7 +12,10 @@ th {
     padding: 8px;
     text-align: left;
 }
-
+.banner-image {
+    max-width: 200px;
+    height: 100px;
+}
 /* Style for table cells */
 td {
     border: 1px solid black;

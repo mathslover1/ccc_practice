@@ -1,6 +1,8 @@
 <?php
 class Catalog_Block_Product_View extends Core_Block_Template
 {
+
+    public $_filterEmail = '';
     public function __construct()
     {
         $this->setTemplate("catalog/product/view.phtml");
@@ -8,16 +10,25 @@ class Catalog_Block_Product_View extends Core_Block_Template
     public function getItem()
     {
         $id = $this->getRequest()->getParams('id');
-        if($id){
-            $list =  Mage::getModel("catalog/product")->getCollection()->addFieldToFilter('product_id',$id);
+        if ($id) {
+            $list =  Mage::getModel("catalog/product")->getCollection()->addFieldToFilter('product_id', $id);
             return $list->getData();
         }
-        $list =  Mage::getModel("catalog/product")->getCollection();
+        if ($this->getRequest()->isPost()) {
+            $filterEmail = $this->getRequest()->getParams('category');
+          $list =  Mage::getModel("catalog/product")->getCollection()->addFieldToFilter('category_id',['like' => "%$filterEmail%"]);
+        } else {
+            $list =  Mage::getModel("catalog/product")->getCollection();
+        }
         return $list->getData();
     }
     public function getUrl2()
     {
         return  Mage::getBaseUrl("admin/catalog_product");
+    }
+    public function getCategoryNm()
+    {
+        return Mage::getModel('catalog/category')->getCollection()->getData();
     }
     public function getCategoryNameById($id)
     {
@@ -28,3 +39,4 @@ class Catalog_Block_Product_View extends Core_Block_Template
         return false;
     }
 }
+

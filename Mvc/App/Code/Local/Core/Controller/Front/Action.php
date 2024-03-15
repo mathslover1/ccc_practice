@@ -4,21 +4,17 @@ class Core_Controller_Front_Action
 {
   protected $_layout = null;
   protected $_allowedAction = [];
-  public function __construct(){
+  public function __construct()
+  {
     $this->init();
     $layout = $this->getLayout();
-      $layout->getChild("head")->addCss("header.css");
-      $layout->getChild("head")->addCss("footer.css");
-      $layout->getChild("head")->addJs("header.js");
+    $layout->getChild("head")->addCss("header.css");
+    $layout->getChild("head")->addCss("footer.css");
+    $layout->getChild("head")->addJs("header.js");
   }
-  public function init(){
-    if (
-      !in_array($this->getRequest()->getActionName(), $this->_allowedAction) &&
-      !Mage::getSingleton('core/session')->get('logged_in_customer_user_id')
-  ) {
-      $this->setRedirect('customer/account/login');
-  }
-  return $this;
+  public function init()
+  {
+    return $this;
   }
   public function getLayout()
   {
@@ -27,11 +23,22 @@ class Core_Controller_Front_Action
     }
     return $this->_layout;
   }
-  public function getRequest(){
+  public function getRequest()
+  {
     return Mage::getModel("core/request");
   }
-  public function setRedirect($url){
-      $url = Mage::getBaseUrl()."/".$url;
-      header("Location:".$url); 
+  public function setRedirect($url)
+  {
+    $url = Mage::getBaseUrl() . "/" . $url;
+    header("Location:" . $url);
+  }
+  public function checkDataAndRedirect(array $data)
+  {
+    foreach ($data as $_keys => $_values) {
+      if (!$_values) {
+        $this->setRedirect($_keys);
+        break;
+      }
+    }
   }
 }

@@ -51,6 +51,7 @@ class Core_Model_Db_Adapter
     }
     public function insert($query)
     {
+        // print_r($query);die;
         $this->connect();
         $sql = mysqli_query($this->connect(), $query);
         if ($sql) {

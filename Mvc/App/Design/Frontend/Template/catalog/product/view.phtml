@@ -1,52 +1,70 @@
+<form method="post">
+<div>
+    <div class="form-group mb-3 mb-md-0">
+    <select name="category" id="category_id" class="select-box">
+                        <option value="">---------All---------</option>
+                        <?php foreach ($this->getCategoryNm() as $category) : ?>
+                            <option value="<?php echo $category->getCategoryId() ?>">
+                                <?php echo $category->getCategoryName(); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+    </div>
+    <div class="form-group mb-3 mb-md-0">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</div>
+</form>
 <table border="1px">
     <tr>
         <th>Product Id</th>
         <th>Image</th>
-        <th>Name</th>
-        <th>Color</th>
+        <th>Price</th>
+        <th>Category</th>
         <th>Description</th>
-        <th colspan=2>AddTocart</th>
+        <th colspan=2>AddToCart</th>
     </tr>
     <?php foreach ($this->getItem() as $product) { ?>
         <tr>
-        <td>
-            <?php echo $product->getProductId(); ?>
-        </td>
-        <td>
-            <img src="<?php echo Mage::getBaseUrl('media/product/'). $product->getImageLink(); ?>" style="width:200px" alt=""> 
-        </td>
-        <td>
-            <?php echo $product->getName(); ?>
-        </td>
-        <td>
-            <?php echo $product->getColor(); ?>
-        </td>
-        <td>
-            <?php echo $product->getDescription(); ?>
-        </td>
-
-
-        <form method="POST" action="<?php echo $this->getUrl('sales/quote/add') ?>">
             <td>
-                <div class="form">
-                    <?php //$categoryModel = $this->getCategoryForm();                         ?>
-                    <div class="row">
-                        <input type="hidden" name="cart[product_id]" value="<?php echo $product->getProductId(); ?>">
-                    </div>
-                    <div class="row">
-                        <label for="quentity">Quantity : </label>
-                        <input type="text" name="cart[qty]" id="quentity"
-                            value="<?php //echo $product->getQuentity();                         ?>">
-                    </div>
-                </div>
+                <?php echo $product->getProductId(); ?>
             </td>
             <td>
-                <div class="row">
-                    <input type="submit" value="AddToCart">
-                </div>
+                <img src="<?php echo Mage::getBaseUrl('media/product/') . $product->getImageLink(); ?>" style="width:200px" alt="">
             </td>
-        </form>
+            <td>
+                <?php echo $product->getPrice(); ?>
+            </td>
+            <td>
+                <?php echo $this->getCategoryNameById($product->getCategoryId()); ?>
+            </td>
+            <td>
+                <?php echo $product->getDescription(); ?>
+            </td>
 
-    </tr>
+
+            <form method="POST" action="<?php echo $this->getUrl('sales/quote/add') ?>">
+                <td>
+                    <div class="form">
+                        <?php //$categoryModel = $this->getCategoryForm();                         
+                        ?>
+                        <div class="row">
+                            <input type="hidden" name="cart[product_id]" value="<?php echo $product->getProductId(); ?>">
+                        </div>
+                        <div class="row">
+                            <label for="quentity">Quantity : </label>
+                            <input type="text" name="cart[qty]" id="quentity" value="<?php //echo $product->getQuentity();                         
+                                                                                        ?>">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row">
+                        <input type="submit" value="AddToCart">
+                    </div>
+                </td>
+            </form>
+
+        </tr>
     <?php } ?>
 </table>

@@ -21,8 +21,15 @@ class Admin_Controller_Catalog_Product extends Core_Controller_Admin_Action
     public function saveAction()
     {
         $data = $this->getRequest()->getparams("Catalog_product");
+        if (isset($_POST['submit'])) {
+            $imageName2 = $_FILES['image_link']['name'];
+            $tmp_name = $_FILES['image_link']['tmp_name'];
+            $folder = "media/product/" . $imageName2;
+            move_uploaded_file($tmp_name,$folder);
+        }
+        $data['image_link'] = $imageName2;
         $product = Mage::getModel("catalog/product")
-            ->setData($data);
+        ->setData($data);
         $product->save();
         $location = Mage::getBaseUrl("admin/catalog_product/list");
         header("Location: $location");

@@ -14,7 +14,6 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
     {
         return Mage::getModel('catalog/product')->load($this->getProductId());
     }
-
     protected function _beforeSave()
     {
         if ($this->getProductId()) {

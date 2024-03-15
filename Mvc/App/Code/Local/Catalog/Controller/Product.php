@@ -1,7 +1,6 @@
 <?php 
 
 class Catalog_Controller_Product extends Core_Controller_Front_Action {
-    protected $_allowedAction = [];
     public function includefile($newfile)
     {
         $newfile->addCss("category/form.css");

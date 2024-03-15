@@ -5,7 +5,7 @@ $product_model = $this->getProduct();
 ?>
 <div class="form" style="border:1px solid black; width:30vw; padding: 15px">
     <h2>Product Form</h2>
-    <form method="POST" action="<?php echo $this->getUrl('admin/catalog_product/save'); ?>">
+    <form method="post" action="<?php echo $this->getUrl('admin/catalog_product/save'); ?> " enctype="multipart/form-data">
         <div class="row">
             <input type="hidden" name="Catalog_product[product_id]" value="<?php echo $product_model->getProductId()?>">
         </div>
@@ -36,7 +36,7 @@ $product_model = $this->getProduct();
 
         <div class="row">
             <label for="image_link">Image Link : </label>
-            <input type="text" name="Catalog_product[image_link]" id="image_link" value="<?php echo $product_model->getImageLink()?>">
+            <input type="file" name="image_link" id="image_link" value="<?php echo $product_model->getImageLink()?>" accept="image/*" >
         </div>
 
         <div class="row">
@@ -93,7 +93,7 @@ $product_model = $this->getProduct();
         </div>
 
         <div class="row">
-            <input type="submit" value="Submit">
+            <input type="submit" name="submit" value="Submit">
         </div>
     </form>
 </div>

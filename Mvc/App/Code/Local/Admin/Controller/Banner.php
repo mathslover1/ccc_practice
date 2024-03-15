@@ -30,8 +30,8 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         }
         $banner['banner_image'] = $imageName;
         $_product = Mage::getModel('banner/banner')
-            ->setData($banner)
-            ->save();
+            ->setData($banner);
+           $_product->save();
         $this->setRedirect('admin/banner/list');
     }
     public function deleteAction()
@@ -39,6 +39,7 @@ class Admin_Controller_Banner extends Core_Controller_Admin_Action
         $id = $this->getRequest()->getparams("id");
         $product = Mage::getModel("banner/banner")->load($id);
         $product->delete();
+        $this->setRedirect('admin/banner/list');
     }
     public function listAction()
     {
