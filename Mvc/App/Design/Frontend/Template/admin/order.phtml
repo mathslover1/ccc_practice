@@ -1,0 +1,42 @@
+<h1 id="h1">Your Order</h1>
+<div class="container-new">
+    <table class="table-new">
+        <thead>
+            <tr>
+                <th>Item Number</th>
+                <th>Customer Id</th>
+                <th>Order Number</th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Product Color</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Row Total</th>
+                <th>Tax Percent</th>
+                <th>Grand Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $a = 1; foreach ($this->getCustomerOrder() as $order) {
+                foreach($this->getOrderItem($order->getOrderId()) as $orderItem) { 
+                foreach($this->getProductItem($orderItem->getProductId()) as $productItem){ ?>
+            <tr>
+                <td><?php echo $a++; ?></td>
+                <td><?php print_r($order->getCustomerId()); ?></td>
+                <td><?php print_r($order->getOrderNumber()); ?></td>
+                <td><img src="<?php echo Mage::getBaseUrl("media/product/") . $productItem->getImageLink(); ?>" alt="Product Image" class="product-image-new"></td>
+                <td><?php print_r($orderItem->getProductName()); ?></td>
+                <td><?php print_r($orderItem->getProductColor()); ?></td>
+                <td><?php print_r($orderItem->getPrice()); ?></td>
+                <td><?php print_r($orderItem->getQty()); ?></td>
+                <td><?php print_r($orderItem->getRowTotal()); ?></td>
+                <td><?php print_r($order->getTaxPercent()); ?></td>
+                <td><?php print_r($order->getGrandTotal()); ?></td>
+            </tr>
+            <?php } } }?>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

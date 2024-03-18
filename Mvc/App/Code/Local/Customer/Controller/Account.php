@@ -40,6 +40,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
             }
             if ($exists == "Yes") {
                 Mage::getSingleton('core/session')->set('logged_in_customer_user_id', $customerId);
+                Mage::getModel('sales/quote')->initQuote();
                 $this->setRedirect("customer/account/dashboard");
             } else {
                 $this->setRedirect("customer/account/dashboard");
@@ -67,10 +68,42 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
     {
         $layout =  $this->getLayout();
         $child = $layout->getChild('content');
-        $layout->getChild('head')->addCss('header.css');
+        $layout->getChild('head')->addCss('customer/dashboard.css');
         $dashboard = $layout->createBlock('customer/dashboard');
         $child->addChild('dashboard', $dashboard);
         $layout->toHtml();
+    }
+    public function passwordAction()
+    {
+        $check = $this->getRequest()->isPost();
+        if ($check) {
+            $data = $this->getRequest()->getParams('password');
+            // print_r($data);die;
+            $customerModel = Mage::getModel('customer/customer')
+                ->getCollection()
+                ->addFieldToFilter('customer_id', $data['customer_id'])
+                ->addFieldToFilter('password', $data['old_password']);
+            $exists = "No";
+            foreach ($customerModel->getData() as $customer) {
+                $exists = "Yes";
+            }
+            if ($exists == "Yes") {
+                unset($data['old_password']);
+             Mage::getModel('customer/customer')->setData($data)->save();
+                
+                $this->setRedirect("customer/account/dashboard");
+            } else {
+                $this->setRedirect("customer/account/password");
+            }
+        } else {
+        $layout =  $this->getLayout();
+        $child = $layout->getChild('content');
+        $layout->getChild('head')->addCss('customer/password.css');
+        $layout->getChild('head')->addJs('customer/password.js');
+        $dashboard = $layout->createBlock('customer/password');
+        $child->addChild('password', $dashboard);
+        $layout->toHtml();
+        }
     }
     public function forgotpasswordAction()
     {
@@ -78,7 +111,7 @@ class Customer_Controller_Account extends Core_Controller_Front_Action
         $child = $layout->getChild('content');
         // $layout->getChild('head')->addCss('header.css');
         $dashboard = $layout->createBlock('customer/forgotpassword');
-        $child->addChild('dashboard', $dashboard);
+        $child->addChild('forgotpassword', $dashboard);
         $layout->toHtml();
     }
     public function logoutAction() {

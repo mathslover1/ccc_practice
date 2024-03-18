@@ -8,7 +8,20 @@ class Sales_Model_Order_Item extends Core_Model_Abstract
         $this->_collectionClass = 'Sales_Model_Resource_Collection_Order_Item';
         $this->_modelClass = 'sales/order_item';
     }
+    public function addOrderItem( $orderData, $orderId)
+    {
+        $productData = Mage::getModel('catalog/product')->load($orderData->getProductId());
+        $this
+            ->setData($orderData->getData())
+            ->removeData('quote_id')
+            ->removeData('item_id')
+            ->removeData('customer_id')
+            ->addData('product_name', $productData->getName())
+            ->addData('product_color', $productData->getColor())
+            ->addData('order_id', $orderId)
+            ->save();
+        $inventory = (int)$productData->getInventory() - (int)$this->getQty();
+        $productData->addData('inventory',$inventory)->save();
+        return $this;
+    }
 }
-
-
-?>

@@ -22,8 +22,8 @@ class Sales_Controller_Quote extends Core_Controller_Front_Action
         $quoteId = Mage::getSingleton('core/session')->get("quote_id");
         $addressData = Mage::getSingleton('core/request')->getParams('customer_address');
         $this->checkDataAndRedirect(['cart' =>$quoteId,'cart/checkout/form' => $addressData]);
-         Mage::getSingleton('sales/quote')->addAddress($addressData);
-            $this->setRedirect('cart/checkout/form');
+        Mage::getSingleton('sales/quote')->addAddress($addressData);
+        $this->setRedirect('cart/checkout/payment');
     }
     public function placeOrderAction()
     {

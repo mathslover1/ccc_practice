@@ -32,10 +32,21 @@ class Core_Model_Resource_Collection_Abstract
         $this->_select['LIMIT'][] = $limit;
         return $this;
     }
+    public function addCondition($condition){
+        // addCondition($condition)
+        $this->_select['CONDITION'][] = $condition;
+        return $this;
+    }
     public function addGroupBy($GROUP)
     {
         //addGroupBy($column);
         $this->_select['GROUP BY'][] = $GROUP;
+        return $this;
+    }
+    public function addOrderBy($GROUP)
+    {
+        //addGroupBy($column);
+        $this->_select['ORDER BY'][] = $GROUP;
         return $this;
     }
     public function addOffset($OFFSET)
@@ -50,10 +61,21 @@ class Core_Model_Resource_Collection_Abstract
         $this->_select['HAVING'][] = $HAVING;
         return $this;
     }
-    
+    public function addSum($column,$newName)
+{
+    // ->addSum($column);
+    $this->_select["SUM"] = "SUM($column) AS " . $newName;
+    return $this;
+}
+
     public function load()
     {
-        $sql = "SELECT * FROM {$this->_select['FROM']}";
+        $sql = "SELECT *";
+
+        if (isset($this->_select["SUM"])) {
+            $sql .= ",{$this->_select['SUM']}";
+        }
+        $sql .= " FROM {$this->_select['FROM']}";
         if (isset($this->_select["WHERE"])) {
             $whereCondition = [];
             foreach ($this->_select["WHERE"] as $column => $value) {
@@ -98,6 +120,10 @@ class Core_Model_Resource_Collection_Abstract
             $GROUP = implode(",", array_values($this->_select["GROUP BY"]));
             $sql .= " GROUP BY $GROUP";
         }
+        if (isset($this->_select["ORDER BY"])) {
+            $GROUP = implode(",", array_values($this->_select["ORDER BY"]));
+            $sql .= " ORDER BY $GROUP";
+        }
         if (isset($this->_select["OFFSET"])) {
             $OFFSET = implode(",", array_values($this->_select["OFFSET"]));
             $sql .= " OFFSET $OFFSET";
@@ -106,7 +132,10 @@ class Core_Model_Resource_Collection_Abstract
             $HAVING = implode(",", array_values($this->_select["HAVING"]));
             $sql.= " HAVING $HAVING";
         }
-        // echo $sql;die;   
+        if(isset($this->_select['CONDITION'])){
+            $sql.=  " ".implode($this->_select['CONDITION']);
+        }
+        // echo $sql;die;
         $result = $this->_resource->getAdapter()->fetchAll($sql);
         foreach ($result as $row) {
             $this->_data[] = Mage::getModel($this->_modelClass)->setData($row);

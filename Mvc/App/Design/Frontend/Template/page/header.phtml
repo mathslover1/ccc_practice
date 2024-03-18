@@ -3,10 +3,24 @@
   <div class="header-right">
     <div class="pill-nav" id="myDIV">
       <ul>
-        <a class="btn"href="<?php echo$this->getHeaderUrl("");?>">Home</a>
-        <a class="btn"href="<?php echo$this->getHeaderUrl("catalog/product/view");?>">Product</a>
-        <a class="btn" href="<?php echo$this->getHeaderUrl("customer/account/login");?>">Login</a>
-        <a class="btn" href="<?php echo$this->getHeaderUrl("customer/account/logout");?>">Log Out</a>
+      <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("");?>">Home</a></div>
+      <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("catalog/product/view");?>">Product</a></div>
+      <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("cart");?>">Cart</a></div>
+      <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("customer/order");?>">Order</a></div>
+
+        <div class="dropdown">
+        <?php if(Mage::getSingleton('core/session')->get('logged_in_customer_user_id')){ ?>
+          <a class="btn">  Profile </a>
+          <div class="dropdown-content">
+            <a  href="<?php echo $this->getHeaderUrl("customer/account/dashboard"); ?>">Profile</a>
+            <a  href="<?php echo $this->getHeaderUrl("customer/account/password"); ?>">password?</a>
+            <a  href="<?php echo$this->getHeaderUrl("customer/account/logout");?>">Log Out</a>
+
+          <?php }else{ ?>
+        <a class='btn'  href="<?php echo$this->getHeaderUrl("customer/account/login");?>">Login</a>
+        <?php }?>
+        </div>
+        </div>
       </ul>
     </div>
   </div>

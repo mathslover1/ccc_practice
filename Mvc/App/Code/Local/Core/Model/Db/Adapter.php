@@ -62,6 +62,8 @@ class Core_Model_Db_Adapter
     }
     public function update($query)
     {
+        // echo "<pre>";
+        // print_r($query);
         $this->connect();
         $sql = mysqli_query($this->connect(), $query);
         if ($sql) {

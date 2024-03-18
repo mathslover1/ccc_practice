@@ -1,36 +1,71 @@
-<div class="table">
-    <table border="1">
-        <tr>
-            <th>Customer Email</th>
-            <th>Name</th>
-            <th>Billing Address</th>
-            <th>Billing City</th>
-            <th>Billing Region</th>
-            <th>Billing Country</th>
-            <th>Billing Phone</th>
-            <th>Shipping Address</th>
-            <th>Shipping City</th>
-            <th>Shipping Region</th>
-            <th>Shipping Country</th>
-            <th>Shipping Phone</th>
-            <th>Default</th>
-        </tr>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="profile-container">
         <?php foreach ($this->getCustomer() as $product) : ?>
-            <tr>
-                <td><?php print_r($product->getCustomerEmail()); ?></td>
-                <td><?php print_r($product->getFirstName().$product->getLastName()); ?></td>
-                <td><?php print_r($product->getBillingAddress()); ?></td>
-                <td><?php print_r($product->getBillingCity()); ?></td>
-                <td><?php print_r($product->getBillingRegion()); ?></td>
-                <td><?php print_r($product->getBillingCountry()); ?></td>
-                <td><?php print_r($product->getBillingPhone()); ?></td>
-                <td><?php print_r($product->getShippingAddress()); ?></td>
-                <td><?php print_r($product->getShippingCity()); ?></td>
-                <td><?php print_r($product->getShippingRegion()); ?></td>
-                <td><?php print_r($product->getShippingCountry()); ?></td>
-                <td><?php print_r($product->getShippingPhone()); ?></td>
-                <td><?php print_r($product->getDefault()); ?></td>
-            </tr>
+        <div class="profile-card">
+            <div class="profile-info">
+                <div class="info">
+                    <div class="label">Customer Email:</div>
+                    <div class="value"><?php echo $product->getCustomerEmail(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Name:</div>
+                    <div class="value"><?php echo $product->getFirstName() . " " . $product->getLastName(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Billing Address:</div>
+                    <div class="value"><?php echo $product->getBillingAddress(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Billing City:</div>
+                    <div class="value"><?php echo $product->getBillingCity(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Billing Region:</div>
+                    <div class="value"><?php echo $product->getBillingRegion(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Billing Country:</div>
+                    <div class="value"><?php echo $product->getBillingCountry(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Billing Phone:</div>
+                    <div class="value"><?php echo $product->getBillingPhone(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Shipping Address:</div>
+                    <div class="value"><?php echo $product->getShippingAddress(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Shipping City:</div>
+                    <div class="value"><?php echo $product->getShippingCity(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Shipping Region:</div>
+                    <div class="value"><?php echo $product->getShippingRegion(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Shipping Country:</div>
+                    <div class="value"><?php echo $product->getShippingCountry(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Shipping Phone:</div>
+                    <div class="value"><?php echo $product->getShippingPhone(); ?></div>
+                </div>
+                <div class="info">
+                    <div class="label">Default:</div>
+                    <div class="value"><?php echo $product->getDefault(); ?></div>
+                </div>
+            </div>
+        </div>
         <?php endforeach; ?>
-    </table>
-</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation</title>
+</head>
+<body>
+    <div class="container1">
+        <h1>Order Confirmation</h1>
+        <div class="order-details">
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Color</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td><?php echo $this->getProductData()[0]->getProductName(); ?></td>
+                    <td><?php echo $this->getProductData()[0]->getProductColor(); ?></td>
+                    <td><?php echo $this->getProductData()[0]->getQty(); ?></td>
+                    <td><?php echo '$' . number_format($this->getProductData()[0]->getPrice(), 2); ?></td>
+                    <td><?php echo '$' . number_format($this->getProductData()[0]->getRowTotal(), 2); ?></td>
+                </tr>
+            </table>
+        </div>
+        <div class="total">
+            <p><strong>Order Number:</strong> <?php echo $this->getOrderData()['order_number']; ?></p>
+            <p><strong>Tax Percent:</strong> <?php echo $this->getOrderData()['tax_percent'];  ?>%</p>
+            <p><strong>Grand Total:</strong> <?php echo '$' . number_format($this->getOrderData()['grand_total'], 2); ?></p>
+        </div>
+    </div>
+</body>
+</html>

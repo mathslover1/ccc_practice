@@ -27,4 +27,9 @@ class Catalog_Block_Admin_Product_List extends Core_Block_Template
         }
         return false;
     }
+    
+    public function getSalesItemData($productId){
+        $sales = Mage::getModel("sales/order_item")->getCollection()->addGroupBy('product_id')->addSum('qty','sum_qty')->addFieldToFilter('product_id',$productId);
+        return $sales->getData();
+    }
 }

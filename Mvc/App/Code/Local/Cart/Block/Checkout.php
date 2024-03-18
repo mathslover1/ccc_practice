@@ -7,8 +7,7 @@ class Cart_Block_Checkout extends Core_Block_Template
         $this->setTemplate('cart/checkout.phtml');
     }
     public function getAddress(){
-       $id =  Mage::getSingleton('core/session')->get('quote_customer_id'); 
-    //    $id = "1";
+       $id =  Mage::getSingleton('core/session')->get('quote_customer_id');
        $list =  Mage::getSingleton("sales/quote_customer")->getCollection()->addFieldToFilter("quote_customer_id",$id);
        return $list->getData();
     }
@@ -52,22 +51,5 @@ class Cart_Block_Checkout extends Core_Block_Template
             ->getFirstItem()
             ->getCustomerEmail();
     }
-    public function getPaymentMethods()
-    {
-        return [
-            'card' => 'Credit or Debit Card',
-            'digital_wallet' => 'Digital Wallet',
-            'upi' => 'UPI',
-            'net_banking' => 'Net Banking',
-            'cod' => 'Cash On Delivery'
-        ];
-    }
-    public function getShippingMethods()
-    {
-        return [
-            'normal_day' => 'Normal Day Shipping',
-            'same_day' => 'Same Day Shipping',
-            'international' => 'International Shipping'
-        ];
-    }
+
 }

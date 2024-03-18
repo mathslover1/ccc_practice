@@ -24,6 +24,8 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
     }
     public function addItem(Sales_Model_Quote $quote, $productId, $qty, $itemId = null)
     {
+        
+        $customerId = Mage::getSingleton('core/session')->get('logged_in_customer_user_id');
         $item = $this->getCollection()
             ->addFieldToFilter('product_id', $productId)
             ->addFieldToFilter('quote_id', $quote->getId())
@@ -38,6 +40,7 @@ class Sales_Model_Quote_Item extends Core_Model_Abstract
             }
             $this->addData('product_id', $productId)
                 ->addData('quote_id', $quote->getId())
+                // ->addData('customer_id', $customerId)
                 ->addData('qty', $qty);
         $this->save();
         return $this;

@@ -158,37 +158,7 @@
                 <button type="submit">Save Address Permanently</button>
             </div>
         </form>
-        <br><br>
-    <form class="form-payment" action="<?php echo $this->getUrl('sales/quote/placeOrder') ?>" method="post">
-            <h2>Payment Method</h2>
-            <input type="hidden" name="quote_payment_method[quote_id]" value="<?php echo $this->getQuoteId() ?>">
-                <label for="payment_method">Payment Method:</label>
-                <select name="quote_payment_method[payment_method]" id="payment_method">
-                    <?php 
-                    foreach ($this->getPaymentMethods() as $key => $val): ?>
-                        <option value='<?php  echo $key ?>' class="payment-method-option">
-                            <?php echo $val ?>
-                        </option>;
-                    <?php endforeach; 
-                    ?>
-                </select>
-            <h2>Shipping Method</h2>
-            <input type="hidden" name="quote_shipping_method[quote_id]" value="<?php echo $this->getQuoteId() ?>">
-                <label for="shipping_method">Shipping Method:</label>
-                <select name="quote_shipping_method[shipping_method]" id="shipping_method">
-                    <?php foreach ($this->getShippingMethods() as $key => $val): ?>
-                        <option value='<?php  echo $key ?>' class="shipping-method-option">
-                            <?php echo $val ?>
-                        </option>;
-                    <?php endforeach; ?>
-                </select>
-                
-        <div><br>
-            <input type="submit" name="submit" value="Place Order">
-        </div>
-    </form>
-</div>
-
+ 
     </div>
     
 </div>

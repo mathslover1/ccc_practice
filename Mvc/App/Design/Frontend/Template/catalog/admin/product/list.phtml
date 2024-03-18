@@ -6,6 +6,7 @@
             <th>SKU</th>
             <th>Color</th>
             <th>Size</th>
+            <th>Quantity Left</th>
             <th>Description</th>
             <th>ImageLink</th>
             <th>Link</th>
@@ -20,13 +21,21 @@
             <th>UPDATE</th>
             <th>DELETE</th>
         </tr>
-        <?php foreach ($this->getList() as $product) : ?>
+        <?php $qty = 0; foreach ($this->getList() as $product) : 
+            foreach ($this->getSalesItemData($product->getProductId()) as $item) {
+                        $qty = $item->getSumQty();
+                    }
+                    $Inventory = $product->getInventory();
+                    $leftProduct = $Inventory - $qty;
+                    $qty = 0;
+                    ?>
             <tr>
                 <td><?php print_r($product->getProductId()); ?></td>
                 <td><?php print_r($product->getName()); ?></td>
                 <td><?php print_r($product->getSku()); ?></td>
                 <td><?php print_r($product->getColor()); ?></td>
                 <td><?php print_r($product->getSize()); ?></td>
+                <td><?php echo $product->getInventory(); ?></td>
                 <td><?php print_r($product->getDescription()); ?></td>
                 <td><?php print_r($product->getImageLink()); ?></td>
                 <td>

@@ -11,6 +11,7 @@ class Core_Controller_Front_Action
     $layout->getChild("head")->addCss("header.css");
     $layout->getChild("head")->addCss("footer.css");
     $layout->getChild("head")->addJs("header.js");
+    $layout->getChild("head")->addJs("jquery-3.7.1.js");
   }
   public function init()
   {
