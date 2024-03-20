@@ -28,7 +28,7 @@ class Core_Model_Abstract
     }
     public function getId()
     {
-        return $this->_data[$this->getResource()->getPrimaryKey()];
+        return isset($this->_data[$this->getResource()->getPrimaryKey()]) ? $this->_data[$this->getResource()->getPrimaryKey()] : "";
     }
     public function getResource()
     {

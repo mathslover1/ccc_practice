@@ -84,9 +84,10 @@ class Core_Model_Resource_Collection_Abstract
                         $_value = array('eq' => $_value);
                     }
                     foreach ($_value as $_condition => $_v) {
+                        $_v = addslashes($_v);
                         switch ($_condition) {
                             case 'eq':
-                                $whereCondition[] = "{$column} = '{addslashes($_v)}'";
+                                $whereCondition[] = "{$column} = '{$_v}'";
                                 break;
                             case 'in':
                                 if (is_array($_v)) {

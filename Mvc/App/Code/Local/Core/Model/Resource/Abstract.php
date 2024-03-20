@@ -11,9 +11,22 @@ class Core_Model_Resource_Abstract {
         $this->_tableName = $tablename;
         $this->_primarykey = $primarykey;
     }
+    // public function load($id, $column = null)
+    // {
+        // $query = "SELECT * FROM {$this->_tableName} WHERE {$this->_primarykey} = {$id} LIMIT 1 ";
+        // return $this->getAdapter()->fetchRow($query);
+
+    // }
     public function load($id, $column = null)
     {
-        $query = "SELECT * FROM {$this->_tableName} WHERE {$this->_primarykey} = {$id} LIMIT 1 ";
+        $column ?
+            ($query = "SELECT * FROM {$this->getTableName()} 
+            WHERE {$column} = {$id} 
+            LIMIT 1")
+            :
+            ($query = "SELECT * FROM {$this->getTableName()} 
+            WHERE {$this->getPrimaryKey()} = {$id} 
+            LIMIT 1");
         return $this->getAdapter()->fetchRow($query);
     }
     public function save(Core_Model_Abstract $product)
@@ -63,7 +76,7 @@ class Core_Model_Resource_Abstract {
         $coloumns = $whereCond = [];
     
         foreach($data as $_field => $_value){
-            $coloumns[] = "`{$_field}`= " . "'" . ($_value) ."'";
+            $coloumns[] = "`{$_field}`= " . "'" . addslashes($_value) ."'";
     
         }
         $coloumns = implode(", ", $coloumns);

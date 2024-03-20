@@ -1,19 +1,19 @@
 <form method="post">
-<div>
-    <div class="form-group mb-3 mb-md-0">
-    <select name="category" id="category_id" class="select-box">
-                        <option value="">---------All---------</option>
-                        <?php foreach ($this->getCategoryNm() as $category) : ?>
-                            <option value="<?php echo $category->getCategoryId() ?>">
-                                <?php echo $category->getCategoryName(); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
+    <div>
+        <div class="form-group mb-3 mb-md-0">
+            <select name="category" id="category_id" class="select-box">
+                <option value="">---------All---------</option>
+                <?php foreach ($this->getCategoryNm() as $category) : ?>
+                    <option value="<?php echo $category->getCategoryId() ?>">
+                        <?php echo $category->getCategoryName(); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group mb-3 mb-md-0">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
     </div>
-    <div class="form-group mb-3 mb-md-0">
-        <button class="btn btn-primary" type="submit">Submit</button>
-    </div>
-</div>
 </form>
 <table border="1px">
     <tr>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="row">
                             <label for="quentity">Quantity : </label>
-                            <input type="text" name="cart[qty]" id="quentity" value="<?php //echo $product->getQuentity();                         
+                            <input type="number" max="<?php echo $product->getInventory(); ?>" min="1" name="cart[qty]" id="quentity" value="<?php //echo $product->getQuentity();                         
                                                                                         ?>">
                         </div>
                     </div>

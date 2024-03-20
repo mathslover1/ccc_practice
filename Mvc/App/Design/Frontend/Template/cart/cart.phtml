@@ -24,7 +24,7 @@
                     <input type="hidden" name="cart[product_id]" value="<?php echo $product->getProductId(); ?>">
                     <input type="hidden" name="cart[quote_id]" value="<?php echo $item->getQuoteId(); ?>">
                     <input type="hidden" name="cart[item_id]" value="<?php echo $item->getItemId(); ?>">
-                    <td><input type="number" name="cart[qty]" value="<?php print_r($item->getQty()); ?>" min="1"></td>
+                    <td><input type="number" name="cart[qty]" value="<?php print_r($item->getQty()); ?>" max="<?php echo $product->getInventory(); ?>" min="1"></td>
                     <td><?php print_r($item->getRowTotal()); ?></td>
                     <td>
                         <button class="button" type="submit" name="update">Update</button>

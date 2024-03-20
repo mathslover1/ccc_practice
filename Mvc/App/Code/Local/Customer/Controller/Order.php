@@ -7,7 +7,8 @@ class Customer_Controller_Order extends Core_Controller_Front_Action
         $check = $this->getRequest()->isPost();
         if ($check) {
             $status = $this->getRequest()->getParams('order_status');
-            Mage::getModel('sales/order_status')->setData($status)->save();
+            $orderData = Mage::getModel('sales/order')->load($status['order_id']);
+             Mage::getModel('sales/order_status')->cancelOrderStatus($status, $orderData);
             $this->setRedirect('customer/order');
         } else {
             $layout = $this->getLayout();
