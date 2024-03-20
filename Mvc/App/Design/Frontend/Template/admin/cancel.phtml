@@ -1,0 +1,34 @@
+<h1 id="h1">Cancel Order Request</h1>
+<div class="container-new">
+    <table class="table-new">
+        <thead>
+            <tr>
+                <th>Item Number</th>
+                <th>Order Number</th>
+                <th>Customer Id</th>
+                <th>Status</th>
+                <th>Approve</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $a=1;
+            foreach ($this->getOrderCancelData() as $orderCancelData) :
+                foreach ($this->getOrderData($orderCancelData->getOrderId()) as $orderData) : ?>
+                    <tr><form method="post" action="<?php echo Mage::getBaseUrl('admin/order/cancel')?>" >
+                    <input type="hidden" name="cancel[request]" value="" >
+                    <input type="hidden" name="cancel[to_status]" value="cancelled" >
+                    <input type="hidden" name="cancel[history_id]" value="<?php print_r($orderCancelData->getHistoryId()); ?>" >
+                    <input type="hidden" name="cancel[order_id]" value="<?php print_r($orderCancelData->getOrderId()); ?>" >
+                        <td><?php echo $a++; ?></td>
+                        <td><?php print_r($orderData->getOrderNumber()); ?></td>
+                        <td><?php print_r($orderData->getCustomerId()); ?></td>
+                        <td><?php print_r($orderCancelData->getFromStatus()); ?></td>
+                        <td><button class="btn" type="submit">Approve</button>
+                        </td></form>
+                    </tr>
+            <?php endforeach;
+            endforeach;
+            ?>
+        </tbody>
+    </table>
+</div>

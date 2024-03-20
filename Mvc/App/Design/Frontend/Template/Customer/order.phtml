@@ -14,36 +14,30 @@
             <tr>
                 <th>Item Number</th>
                 <th>Order Number</th>
-                <th>Product Image</th>
-                <th>Product Name</th>
-                <th>Product Color</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Row Total</th>
                 <th>Tax Percent</th>
                 <th>Grand Total</th>
+                <th>Order Status</th>
+                <th>Order Details</th>
                 <th>Action</th>
             </tr>
         </thead>
-        <tbody>
-        <?php $a = 1; foreach ($this->getCustomerOrder() as $order) {
-                foreach($this->getOrderItem($order->getOrderId()) as $orderItem) { 
-                foreach($this->getProductItem($orderItem->getProductId()) as $productItem){ ?>
+        <?php $a = 1; foreach ($this->getCustomerOrder() as $order) { ?>
+            <tbody><form action="<?php echo  Mage::getBaseUrl('customer/order'); ?>" method="post">
+            <input type="hidden" name="order_status[from_status]" value="<?php print_r($order->getToStatus()); ?>" >
+            <input type="hidden" name="order_status[to_status]" value="cancelled" >
+            <input type="hidden" name="order_status[action_by]" value="customer" >
+            <input type="hidden" name="order_status[request]" value="1" >
+            <input type="hidden" name="order_status[order_id]" value="<?php print_r($order->getOrderId()); ?>" >
             <tr>
                 <td><?php echo $a++; ?></td>
                 <td><?php print_r($order->getOrderNumber()); ?></td>
-                <td><img src="<?php echo Mage::getBaseUrl("media/product/") . $productItem->getImageLink(); ?>" alt="Product Image" class="product-image-new"></td>
-                <td><?php print_r($orderItem->getProductName()); ?></td>
-                <td><?php print_r($orderItem->getProductColor()); ?></td>
-                <td><?php print_r($orderItem->getPrice()); ?></td>
-                <td><?php print_r($orderItem->getQty()); ?></td>
-                <td><?php print_r($orderItem->getRowTotal()); ?></td>
                 <td><?php print_r($order->getTaxPercent()); ?></td>
                 <td><?php print_r($order->getGrandTotal()); ?></td>
-                <td><button>Cancel Order</button></td>
-            </tr>
-            <?php }?>
-            <?php }?>
+                <td><?php print_r($order->getToStatus()); ?></td>
+                <td><a class="btn" href="<?php echo Mage::getBaseUrl('customer/order/view'); ?>?id=<?php print_r($order->getOrderId());  ?>"> View
+                        </a></td>
+                <td><button class="btn">Cancel Order</button></td>
+            </tr></form>
             <?php }?>
         </tbody>
     </table>

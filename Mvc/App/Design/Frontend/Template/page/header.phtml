@@ -6,8 +6,9 @@
       <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("");?>">Home</a></div>
       <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("catalog/product/view");?>">Product</a></div>
       <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("cart");?>">Cart</a></div>
+      <?php if(Mage::getSingleton('core/session')->get('logged_in_customer_user_id')){ ?>
       <div class="dropdown"> <a class="btn"href="<?php echo$this->getHeaderUrl("customer/order");?>">Order</a></div>
-
+      <?php }?>
         <div class="dropdown">
         <?php if(Mage::getSingleton('core/session')->get('logged_in_customer_user_id')){ ?>
           <a class="btn">  Profile </a>

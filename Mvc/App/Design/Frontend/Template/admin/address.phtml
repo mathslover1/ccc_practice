@@ -1,0 +1,43 @@
+<h1 id="h1">All Order</h1>
+<div class="container-new">
+    <table class="table-new">
+        <thead>
+            <tr>
+                <th>Item Number</th>
+                <th>Customer Id</th>
+                <th>Billing Address:</th>
+                <th>Billing City:</th>
+                <th>Billing Region:</th>
+                <th>Billing Country:</th>
+                <th>Billing Phone:</th>
+                <th>Shipping Address:</th>
+                <th>Shipping City:</th>
+                <th>Shipping Region:</th>
+                <th>Shipping Country:</th>
+                <th>Shipping Phone:</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $a = 1; foreach ($this->getCustomerOrder() as $order) {
+                foreach($this->getOrderAddress($order->getOrderId()) as $orderAddress) { ?>
+            <tr>
+                <td><?php echo $a++; ?></td>
+                <td><?php print_r($order->getCustomerId()); ?></td>
+                <td><?php print_r($orderAddress->getBillingAddress()); ?></td>
+                <td><?php print_r($orderAddress->getBillingCity()); ?></td>
+                <td><?php print_r($orderAddress->getBillingRegion()); ?></td>
+                <td><?php print_r($orderAddress->getBillingCountry()); ?></td>
+                <td><?php print_r($orderAddress->getBillingPhone()); ?></td>
+                <td><?php print_r($orderAddress->getShippingAddress()); ?></td>
+                <td><?php print_r($orderAddress->getShippingCity()); ?></td>
+                <td><?php print_r($orderAddress->getShippingRegion()); ?></td>
+                <td><?php print_r($orderAddress->getShippingCountry()); ?></td>
+                <td><?php print_r($orderAddress->getShippingPhone()); ?></td>
+            </tr>
+            <?php } } ?>
+            <tr class="cnt"><td>
+            <a class="btn" href="<?php echo Mage::getBaseUrl('admin/order/view'); ?>?id=<?php print_r($order->getOrderId());  ?>"> Back
+                                    </a></td></tr>
+        </tbody>
+    </table>
+</div>
