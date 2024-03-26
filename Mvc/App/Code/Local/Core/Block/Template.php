@@ -41,5 +41,8 @@ class Core_Block_Template extends Core_Block_Abstract
     {
         return  Mage::getModel("core/request");
     }
+    public function getRender($type,$data){
+       return Mage::getBlock('core/form_'.$type)->setAttribute($data)->toHtml();
+    }
 
 }

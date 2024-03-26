@@ -20,7 +20,7 @@ class Core_Model_Session
     {
         if (array_key_exists($key, $_SESSION)) {
             return $_SESSION[$key];
-        }elseif(isset($default)) {
+        } elseif (isset($default)) {
             return $default;
         }
         return false;
@@ -39,7 +39,8 @@ class Core_Model_Session
     public function __destruct()
     {
     }
-    public function unsetAll(){
+    public function unsetAll()
+    {
         session_unset();
         session_destroy();
     }

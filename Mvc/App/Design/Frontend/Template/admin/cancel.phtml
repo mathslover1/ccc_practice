@@ -15,10 +15,7 @@
             foreach ($this->getOrderCancelData() as $orderCancelData) :
                 foreach ($this->getOrderData($orderCancelData->getOrderId()) as $orderData) : ?>
                     <tr><form method="post" action="<?php echo Mage::getBaseUrl('admin/order/cancel')?>" >
-                    <input type="hidden" name="cancel[request]" value="" >
-                    <input type="hidden" name="cancel[to_status]" value="cancelled" >
                     <input type="hidden" name="cancel[history_id]" value="<?php print_r($orderCancelData->getHistoryId()); ?>" >
-                    <input type="hidden" name="cancel[order_id]" value="<?php print_r($orderCancelData->getOrderId()); ?>" >
                         <td><?php echo $a++; ?></td>
                         <td><?php print_r($orderData->getOrderNumber()); ?></td>
                         <td><?php print_r($orderData->getCustomerId()); ?></td>

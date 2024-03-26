@@ -45,12 +45,12 @@ class Admin_Controller_Order extends Core_Controller_Admin_Action
         $check = $this->getRequest()->isPost();
         if ($check) {
             $status = $this->getRequest()->getParams('cancel');
-            Mage::getModel('sales/order_status')->setData($status)->save();
+            $orderId =  Mage::getModel('sales/order_status')->adminCancelOrderStatus($status);
             Mage::getModel('sales/order')
-            ->setData($status)
-            ->removeData('history_id')
-            ->removeData('request')
+            ->addData('order_id',$orderId)
+            ->addData('to_status','cancelled')
             ->save();
+            
             $this->setRedirect('admin/order');
         } else {
         $layout = $this->getLayout();

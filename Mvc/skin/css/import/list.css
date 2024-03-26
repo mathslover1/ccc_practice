@@ -1,0 +1,59 @@
+/* Style for the whole list container */
+.list {
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* Style for the table */
+.list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for table headers */
+.list th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style for table cells */
+.list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+/* Style for action links */
+.list a {
+    display: inline-block;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 4px;
+}
+
+/* Hover effect for action links */
+.list a:hover {
+    background-color: #0056b3;
+}
+
+/* Style for the 'Read' action link */
+.list .read-link {
+    background-color: #28a745;
+}
+
+/* Hover effect for the 'Read' action link */
+.list .read-link:hover {
+    background-color: #218838;
+}
+
+/* Style for the 'Import' action link */
+.list .import-link {
+    background-color: #dc3545;
+}
+
+/* Hover effect for the 'Import' action link */
+.list .import-link:hover {
+    background-color: #c82333;
+}

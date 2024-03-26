@@ -82,7 +82,7 @@ class Core_Model_Resource_Abstract {
         $coloumns = implode(", ", $coloumns);
     
         foreach($where as $_field => $_value){
-            $whereCond[] = "`$_field` = "."'" .($_value)."'";
+            $whereCond[] = "`$_field` = "."'" .addslashes($_value)."'";
     
         }
         $whereCond = implode(" AND ", $whereCond);
